@@ -1,0 +1,14 @@
+// Place all the styles related to the samples controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+header,footer{
+  background-color: lightgray;
+  border: 2px dotted orange;
+  width: 100vw;
+  height: 100px;
+}
+
+.main_temp{
+  background-color: pink;
+}

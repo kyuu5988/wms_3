@@ -1,0 +1,28 @@
+<h1>Samples#index headerより上</h1>
+<header>
+  <p class="p01">WMS_2 index header</p>
+</header>
+
+
+  <div class="main_temp">
+    <%= render "main" %>
+  </div>
+
+
+<footer>
+  <p class="p01">index footer</p>
+  <div class="my_page">
+    <%= link_to edit_user_path(current_user) do %>
+      <%= current_user.name %>のマイページ
+    <% end %>
+  </div>
+  <div class="log_put">
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
+  </div>
+
+
+</footer>
+
+
+
+
