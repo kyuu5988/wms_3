@@ -1,18 +1,3 @@
-<header>
-  <p class="p01">WMS_3 index header</p>
-
-<div class="search">
-
-  <%= form_with(url: search_samples_path, local: true, method: :get, class: "search") do |f| %>
-  <%= f.text_field :keyword, placeholder: "番号を入力", class:"search-input", autocomplete: "off" %>
-  <%= f.submit "検索", class: "search-btn" %>
-  <% end %>
-
-</div>
-
-
-
-</header>
 
 
   <div class="main_temp">
@@ -20,20 +5,6 @@
   </div>
 
 
-<footer>
-  <p class="p01">index footer</p>
-  
-  <div class="my_page">
-    <%= link_to edit_user_path(current_user) do %>
-      ログイン中:<%= current_user.name %>
-    <% end %>
-  </div>
-   <div class="log_put">
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
-  </div>
-
-
-</footer>
 
 
 
