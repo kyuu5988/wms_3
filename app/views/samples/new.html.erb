@@ -1,0 +1,71 @@
+<div class='chat-room-form'>
+  <h1>新規サンプル登録</h1>
+  <%=form_with model: @sample, local: true do |f|%>
+    <div class='chat-room-form__field'>
+      
+      <div class='chat-room-form__field--left'>
+        <%= f.label :基本コード, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :基本コード, class: 'chat__room_name chat-room-form__input', placeholder: '10桁',size: 20 , maxlength:10, autocomplete: "off" %>
+      </div>
+
+      <div class='chat-room-form__field--left'>
+        <%= f.label :サブコード, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :サブコード, class: 'chat__room_name chat-room-form__input', placeholder: '3桁',size: 5 , maxlength:3 %>
+      </div>
+
+      <div class='chat-room-form__field--left'>
+        <%= f.label :個別番号, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :個別番号, class: 'chat__room_name chat-room-form__input', placeholder: '2桁まで',size:3,maxlength:2 %>
+      </div>
+
+      <div class='chat-room-form__field--left'>
+        <%= f.label :申込番号, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :申込番号, class: 'chat__room_name chat-room-form__input', placeholder: '6桁',size:12,maxlength:6 %>
+      </div>
+
+      <div class='chat-room-form__field--left'>
+        <%= f.label :販売商品名, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :販売商品名, class: 'chat__room_name chat-room-form__input', placeholder: '販売商品名'%>
+      </div>
+
+
+      <div class='chat-room-form__field--left'>
+        <%= f.label :カテゴリー, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :カテゴリー, class: 'chat__room_name chat-room-form__input', placeholder: 'カテゴリー番号',size:3,maxlength:2 %>
+      </div>
+
+      <div class='chat-room-form__field--left'>
+        <%= f.label :カラー・サイズ, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :カラー, class: 'chat__room_name chat-room-form__input', placeholder: 'なくても可'%>
+      </div>
+
+      <div class='chat-room-form__field--left'>
+        <%= f.label :ロケーション, class: 'chat-room-form__label'%>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :ロケーション %>
+      </div>
+
+
+
+        <%= f.submit class: 'chat-room-form__action-btn'%>
+    </div>
+    
+  <% end %>
+  <%= notice %><br>
+  
+</div>

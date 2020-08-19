@@ -8,10 +8,11 @@ class SamplesController < ApplicationController
     @sample = Sample.new(sample_params)
     if @sample.save
       #redirect_to root_path
-      redirect_to new_sample_path, notice: '作成完了・続けて作成可'
+      redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
     else
-      render :new
-      
+      #render :new
+      redirect_to new_sample_path, notice: '入力に誤りがあります'
+
     end
   end
 
@@ -24,7 +25,6 @@ class SamplesController < ApplicationController
   def sample_params
     params.require(:sample).permit(:基本コード, :サブコード, :個別番号, :申込番号, :販売商品名, :カテゴリー, :カラー, :ロケーション)
   end
-
 
 
 

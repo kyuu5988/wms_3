@@ -6,14 +6,9 @@
 
     <div class="search-list">
       <% @samples.each do |sample| %>
-        <p class=p01><%= sample.基本コード %><%= sample.サブコード %>
+        <p class=p01><%= sample.基本コード %> [サブ]<%= sample.サブコード %>
          / <span><%= sample.販売商品名 %></span>
       <% end %>
     
-    
-    <%= link_to 'topへ', '/' %>
-
-
-
 
 </div>
