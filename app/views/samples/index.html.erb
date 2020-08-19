@@ -11,14 +11,15 @@
 
 <footer>
   <p class="p01">index footer</p>
+  
   <div class="my_page">
-    <%# <%= link_to edit_user_path(current_user) do %> %>
-      <%# <%= current_user.name %>のマイページ %>
-    <%# <% end %> %>
+    <%= link_to edit_user_path(current_user) do %>
+      <%= current_user.nameのマイページ %>
+    <% end %>
   </div>
-  <%# <div class="log_put">
+   <div class="log_put">
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
-  </div> %>
+  </div>
 
 
 </footer>
