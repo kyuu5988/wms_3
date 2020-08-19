@@ -1,0 +1,19 @@
+<div>
+    <div class=main_temp>
+      <%= render "main" %>
+    </div>
+    <h2>検索結果</h2>
+
+    <div class="search-list">
+      <% @samples.each do |sample| %>
+        <p class=p01><%= sample.基本コード %><%= sample.サブコード %>
+         / <span><%= sample.販売商品名 %></span>
+      <% end %>
+    
+    
+    <%= link_to 'topへ', '/' %>
+
+
+
+
+</div>
