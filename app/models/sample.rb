@@ -2,9 +2,8 @@ class Sample < ApplicationRecord
 
   def self.search(search)
     if search
-      Sample.where('基本コード LIKE(?)',"%#{search}%")
+      Sample.where('申込番号 LIKE(?)',"%#{search}%")
     else 
-      #Sample.all
          
     end
   end
