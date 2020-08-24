@@ -44,21 +44,28 @@
     <%= yield %>
 
 <footer>
-  <p class="p01">*footer</p>
-  
-  <%= link_to 'topへ', '/' %>
 
-<% if user_signed_in? %>
-  <div class="my_page">
-    <%= link_to edit_user_path(current_user) do %>
+  <div class="fot-menu">
+    <div class="fot-btn">
+      <%= link_to 'TOP', '/' %>
+    </div>
+    
+    <% if user_signed_in? %>
+    <div class="fot-btn">
+      <%= link_to edit_user_path(current_user) do %>
       ログイン中 : <%= current_user.name %>
-    <% end %>
-  </div>
-  <div class="log_put">
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
-  </div>
-<% end %>
+      <% end %>
+    </div>
 
+    <div class="fot-btn">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'%>
+    </div>
+    <% end %>
+
+    <p class="p01">©️ minami Co.Ltd wms_3 mobile ver_3β</p>
+
+
+  </div>
 
 </footer>
 

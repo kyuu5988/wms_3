@@ -48,3 +48,28 @@ a {
   width: 50px;
   margin-left: 10px;
 }
+
+
+footer {
+  height: 250px;
+}
+
+
+.fot-menu {
+  background-color: lightsalmon;
+  width: 320px;
+  height: 220px;
+  margin: 5px;
+  padding: 5px;
+  display: block;
+}
+
+.fot-btn {
+  background-color: lightskyblue;
+  color: aliceblue;
+  width: fit-content;
+  margin: 10px;
+  border: 2px dotted lightpink;
+
+
+}
