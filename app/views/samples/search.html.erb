@@ -2,11 +2,11 @@
     <div class="main_temp">
       <%= render "main" %>
     </div>
-    <h2>検索結果</h2>
+    <h2>検索結果（番号を入力していない場合は全てのデータが表示されます）</h2>
 
     <div class="search-list">
       <% @samples.each do |sample| %>
-        <p class="p01">
+        <p class="sea-res">
           <%= sample.基本コード %>-
           <%= sample.サブコード %> #
           <%= sample.個別番号 %>　　　ロケ：
@@ -14,7 +14,7 @@
 
         </p>
 
-        <p class="p01">
+        <p class="sea-res2">
           <%= sample.販売商品名 %>
           <%= sample.カラー %>
         </p>
