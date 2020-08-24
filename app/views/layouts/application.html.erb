@@ -28,12 +28,12 @@
 
 
 <header>
-  <p class="p01">wms_3 header</p>
+  <p class="p01">wms_3 mobile</p>
 
 <div class="search">
 
-  <%= form_with(url: search_samples_path, local: true, method: :get, class: "search") do |f| %>
-  <%= f.text_field :keyword, placeholder: "申込番号6桁", class:"search-input", autocomplete: "off" %>
+  <%= form_with(url: search_samples_path, local: true, method: :get, class: "") do |f| %>
+  <%= f.text_field :keyword, placeholder: "申込番号6桁", class:"search-input", autocomplete: "off", maxlength:6 %>
   <%= f.submit "検索", class: "search-btn" %>
   <% end %>
 

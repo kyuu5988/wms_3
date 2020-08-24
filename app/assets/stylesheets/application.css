@@ -26,3 +26,25 @@ body {
 a {
   text-decoration: none;
 }
+
+.search {
+  width: 200px;
+  height: 35px;
+  background-color: lightsalmon;
+  margin: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.search-input {
+  width: 100px;
+  border: 2px dotted lightseagreen;
+}
+
+.search-btn {
+  background-color: lightskyblue;
+  color: aliceblue;
+  width: 50px;
+  margin-left: 10px;
+}
