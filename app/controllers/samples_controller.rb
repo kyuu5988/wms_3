@@ -16,6 +16,18 @@ class SamplesController < ApplicationController
     end
   end
 
+  #8/24仮作成
+  def update
+    @sample = Sample.find(params[:id]) 
+    
+    @sample.update(ロケーション: params[:sample][:ロケーション])
+    
+    text = 'aaa'
+    render plain:text
+  end
+
+
+
   def search
     @samples = Sample.search(params[:keyword])
   end
@@ -88,16 +100,15 @@ class SamplesController < ApplicationController
   #単品移動 style-list
   def auto_move_one_sty
     @sample = Sample.find(params[:sample_id]) 
-    if @sample[:ロケーション] != "style-list"
+    #if @sample[:ロケーション] != "style-list"
       @sample.update(ロケーション: "style-list")
-
       #render plain: @sample[:ロケーション]
       render :done_move_one
 
-    elsif @sample[:ロケーション] == "style-list"
-      render :done_move_one
+    #elsif @sample[:ロケーション] == "style-list"
+      #render :done_move_one
       #redirect_to root_path
-    end
+    #end
 
   end
 
@@ -106,7 +117,6 @@ class SamplesController < ApplicationController
   def done_move
     @sample = Sample.find(params[:sample_id]) 
     #(idはすでに渡されている)
-
     no = @sample[:申込番号] #[]を使ってカラムを指定 
 
     @products = Sample.where(申込番号: no) #指定条件で複数取得
@@ -116,7 +126,6 @@ class SamplesController < ApplicationController
   #単品移動結果表示
   def done_move_one
       @sample = Sample.find(params[:sample_id]) 
-      #(idはすでに渡されている)
   end
 
 

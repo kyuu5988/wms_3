@@ -18,4 +18,20 @@
     <%= @sample.カラー %>
     </p>
 
+
+  <%=form_with model: @sample , local: true do |f|%>
+      
+      <div class=''>
+        <%= f.label :返却する場合はここにロケを入力して下さい %>
+      </div>
+      <div class=''>
+        <%= f.text_field :ロケーション, placeholder:'QRまたは手入力' ,size: 20 , maxlength:10 %>
+      </div>
+
+      <%= f.submit "このロケへ返却"%>
+
+
+  <% end %>
+
+
 </div>
