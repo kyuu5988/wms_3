@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :samples do
     get 'auto_move_ast' => 'samples#auto_move_ast'
     get 'auto_move_cst' => 'samples#auto_move_cst'
-
+    get 'auto_move_one_sty' => 'samples#auto_move_one_sty'
   end
 
 

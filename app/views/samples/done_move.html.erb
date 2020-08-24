@@ -1,8 +1,8 @@
 <p>ロケーションの移動が完了しました</p>
 
-<div class="">
+<div class="search-list">
   <% @products.each do |prod| %>
-    <p class="p01">
+    <p class="sea-res">
     <%= prod.基本コード %>-
     <%= prod.サブコード %> #
     <%= prod.個別番号 %>　　　ロケ：
@@ -10,11 +10,10 @@
 
     </p>
 
-    <p class="p01">
+    <p class="sea-res2">
     <%= prod.販売商品名 %>　　　
     <%= prod.カラー %>
     </p>
-
 
   <% end %>
 </div>

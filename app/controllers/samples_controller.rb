@@ -22,7 +22,7 @@ class SamplesController < ApplicationController
 
 #ここから独自アクション（自動ロケーション更新機能）
 
-  #同品番、同時変更
+  #同品番、同時変更 A-ST
   def auto_move_ast
 
     @sample = Sample.find(params[:sample_id]) 
@@ -53,7 +53,7 @@ class SamplesController < ApplicationController
 
   end
 
-
+  #同時移動 C-ST
   def auto_move_cst
 
     @sample = Sample.find(params[:sample_id]) 
@@ -85,7 +85,24 @@ class SamplesController < ApplicationController
   end
 
 
+  #単品移動 style-list
+  def auto_move_one_sty
+    @sample = Sample.find(params[:sample_id]) 
+    if @sample[:ロケーション] != "style-list"
+      @sample.update(ロケーション: "style-list")
 
+      #render plain: @sample[:ロケーション]
+      render :done_move_one
+
+    elsif @sample[:ロケーション] == "style-list"
+      render :done_move_one
+      #redirect_to root_path
+    end
+
+  end
+
+
+  #移動結果表示
   def done_move
     @sample = Sample.find(params[:sample_id]) 
     #(idはすでに渡されている)
@@ -94,9 +111,13 @@ class SamplesController < ApplicationController
 
     @products = Sample.where(申込番号: no) #指定条件で複数取得
 
-    
   end
 
+  #単品移動結果表示
+  def done_move_one
+      @sample = Sample.find(params[:sample_id]) 
+      #(idはすでに渡されている)
+  end
 
 
 
