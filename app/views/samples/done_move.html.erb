@@ -1,0 +1,20 @@
+<p>移動した</p>
+
+<div class="">
+  <% @products.each do |prod| %>
+    <p class="p01">
+    <%= prod.基本コード %>-
+    <%= prod.サブコード %> #
+    <%= prod.個別番号 %>　　　ロケ：
+    <%= prod.ロケーション %>
+
+    </p>
+
+    <p class="p01">
+    <%= prod.販売商品名 %>　　　
+    <%= prod.カラー %>
+    </p>
+
+
+  <% end %>
+</div>

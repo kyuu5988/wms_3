@@ -30,18 +30,36 @@ class SamplesController < ApplicationController
 
     no = @sample[:申込番号] #[]を使ってカラムを指定 
 
-    arr = [] #動作確認用
+    #arr = [] #動作確認用
     @products = Sample.where(申込番号: no) #指定条件で複数取得
-    @products.update(ロケーション: "720906")
-    #↑利用時はコメントアウト外す（これで指定カラムの値変更）
-    arr << @products[1][:ロケーション] #確認用
-    #取得したレコードのn番目の指定カラム
-    render plain: arr
-    #render :done #確認用
+    if @products[0][:ロケーション] == "A-STUDIO"
+      @products.update(ロケーション: "INV-4F")
+      #↑利用時はコメントアウト外す（これで指定カラムの値変更）
+      #arr << @products[0][:ロケーション] #確認用
+      #取得したレコードのn番目の指定カラム
+      #render plain: arr #確認用
+      render :done_move
+
+    elsif @products[0][:ロケーション] != "A-STUDIO"  
+      @products.update(ロケーション: "A-STUDIO")
+      render :done_move
+
+    else
+      #redirect_to root_path
+      text = "移動エラーです。南に聞いてください"
+      render plain: text
+    end
 
   end
 
-  def done
+  def done_move
+    @sample = Sample.find(params[:sample_id]) 
+    #3000/samples/id/auto_move_all (idはすでに渡されている)
+
+    no = @sample[:申込番号] #[]を使ってカラムを指定 
+
+    @products = Sample.where(申込番号: no) #指定条件で複数取得
+
     
   end
 
