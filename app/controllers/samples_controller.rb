@@ -20,10 +20,14 @@ class SamplesController < ApplicationController
   def update
     @sample = Sample.find(params[:id]) 
     
-    @sample.update(ロケーション: params[:sample][:ロケーション])
-    
-    text = 'aaa'
-    render plain:text
+    if @sample.update(ロケーション: params[:sample][:ロケーション])
+      #↑paramsの中から希望のデータを出している
+      redirect_to root_path, notice: '返却が完了しました。'
+      
+    else
+      redirect_to root_path, notice: '正しく完了しませんでした。戻って正しいロケーションを入力して下さい'
+
+    end
   end
 
 
