@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   #urlアクセスによる自動更新用
 
   resources :samples do
-    get 'auto_move_all' => 'samples#auto_move_all'
+    get 'auto_move_ast' => 'samples#auto_move_ast'
+    get 'auto_move_cst' => 'samples#auto_move_cst'
+
   end
 
 
