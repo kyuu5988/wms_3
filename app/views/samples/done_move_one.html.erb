@@ -21,11 +21,11 @@
 
   <%=form_with model: @sample , local: true do |f|%>
       
-      <div class=''>
+      <div class='done-form'>
         <%= f.label :返却する場合はここにロケを入力して下さい %>
       </div>
       <div class=''>
-        <%= f.text_field :ロケーション, placeholder:'QRまたは手入力' , maxlength:10, size:14, value:"" %>
+        <%= f.text_field :ロケーション, placeholder:'QR or NFC or 直接入力' , maxlength:10, size:16, value:"" %>
       </div>
 
       <%= f.submit "このロケへ返却"%>
