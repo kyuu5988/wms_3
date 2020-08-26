@@ -1,7 +1,7 @@
 <div class='account-page' id='account-page'>
   <div class='account-page__inner clearfix'>
     <div class='account-page__inner--left account-page__header'>
-      <h5>WMS_3 ログイン</h5>
+      <h5>wms_3 ログイン</h5>
       <%= render "devise/shared/links"%>
     </div>
     <div class='account-page__inner--right user-form'>
@@ -11,21 +11,21 @@
             <%= f.label :email%>
           </div>
           <div class='field-input'>
-            <%= f.email_field :email, autofocus: true%>
+            <%= f.email_field :email, autofocus: true, size:10 %>
           </div>
           <div class='field'>
             <div class='field-label'>
-              <%= f.label :password%>
+              <%= f.label :パスワード%>
               <i>(英数字8文字以上)</i>
             </div>
             <div class='field-input'>
-              <%= f.password_field :password, autocomplete: "off"%>
+              <%= f.password_field :password, autocomplete: "off", size:10 %>
             </div>
           </div>
           <div class='actions'>
-            <%= f.submit "Log in", class: 'btn'%>
+            <%= f.submit "ログイン", class: 'btn'%>
           </div>
-                <%= link_to 'top画面', '/' %>
+                <br><%= link_to 'TOP画面へ戻る', '/' %>
 
         </div>
       <% end %>

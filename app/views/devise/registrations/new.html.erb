@@ -3,17 +3,17 @@
     <div class='account-page__inner--left account-page__header'>
       <h2>wms_3</h2>
       <h5>アカウントを作る</h5>
-      <%= link_to 'top画面', '/' %>
+      <%= link_to 'TOP画面へ戻る', '/' %>
     </div>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f|%>
         <%= devise_error_messages!%>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :name%>
+            <%= f.label :名前%>
           </div>
           <div class='field-input'>
-            <%= f.text_field :name, autofocus: true%>
+            <%= f.text_field :name, autofocus: true, size:8 %>
           </div>
         </div>
         <div class='field'>
@@ -21,28 +21,28 @@
             <%= f.label :email%>
           </div>
           <div class='field-input'>
-            <%= f.email_field :email, autocomplete: "off" %>
+            <%= f.email_field :email, autocomplete: "off", size:10 %>
           </div>
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :password%>
+            <%= f.label :パスワード%>
             <i>(英数字8文字以上)</i>
           </div>
           <div class='field-input'>
-            <%= f.password_field :password, autocomplete: "off"%>
+            <%= f.password_field :password, autocomplete: "off", size:10 %>
           </div>
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :password_confirmation%>
+            <%= f.label :パスワードを再入力%>
           </div>
           <div class='field-input'>
-            <%= f.password_field :password_confirmation, autocomplete: "off"%>
+            <%= f.password_field :password_confirmation, autocomplete: "off", size:10 %>
           </div>
         </div>
         <div class='actions'>
-          <%= f.submit "Create Account", class: 'btn'%>
+          <%= f.submit "アカウント作成", class: 'btn'%>
         </div>
       </div>
     <% end %>
