@@ -61,5 +61,9 @@ en:
       not_found: "not found"
       not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        #↓デフォルトエラーメッセージ
+        #one: "1 error prohibited this %{resource} from being saved:"
+        one: "入力ミスがあります。もう一度入力して下さい。"
+        #↓デフォルトエラーメッセージ
+        #other: "%{count} errors prohibited this %{resource} from being saved:"
+        other: "%{count}箇所記入エラーがあります。"
