@@ -2,11 +2,18 @@
     <div class="main_temp">
       <%= render "main" %>
     </div>
-    <h2>検索結果（番号を入力していない場合は全てのデータが表示されます）</h2>
+    <h2>検索結果（無入力時 全データ表示）</h2>
+    <%= notice %>
+    <p class="p02">"<%= @keyword %>"で検索しています。</p>
+
 
     <div class="search-list">
+      <% count = 0 %>
       <% @samples.each do |sample| %>
+        <% count += 1 %>
+        
         <p class="sea-res">
+
           <%= sample.基本コード %>-
           <%= sample.サブコード %> #
           <%= sample.個別番号 %>　　　ロケ：
@@ -18,8 +25,11 @@
           <%= sample.販売商品名 %>　　　
           <%= sample.カラー %>
         </p>
+
       <% end %>
-    
+        <p><%= count %>件見つかりました。</p>
+          
+
     
 
 </div>

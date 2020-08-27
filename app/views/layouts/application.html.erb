@@ -33,11 +33,13 @@
 <div class="search">
 
   <%= form_with(url: search_samples_path, local: true, method: :get, class: "") do |f| %>
-  <%= f.text_field :keyword, placeholder: "申込番号6桁", class:"search-input", autocomplete: "off", maxlength:6 %>
+  <%= f.text_field :keyword, placeholder: "申込番号6桁", class:"search-input", autocomplete: "off", maxlength:10 %>
   <%= f.submit "検索", class: "search-btn" %>
   <% end %>
 
 </div>
+  <p class="">販売商品名でも検索出来ます。</p>
+
 
 </header>
 

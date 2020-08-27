@@ -1,10 +1,11 @@
 class Sample < ApplicationRecord
 
   def self.search(search)
-    if search
+    if search.to_s =~ /^[0-9]+$/
       Sample.where('申込番号 LIKE(?)',"%#{search}%")
-    else 
-         
+    else
+      Sample.where('販売商品名 LIKE(?)',"%#{search}%")
+
     end
   end
 

@@ -34,6 +34,7 @@ class SamplesController < ApplicationController
 
   def search
     @samples = Sample.search(params[:keyword])
+    @keyword = (params[:keyword])
   end
 
 #ここから独自アクション（自動ロケーション更新機能）
