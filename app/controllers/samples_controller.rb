@@ -10,13 +10,21 @@ class SamplesController < ApplicationController
       #redirect_to root_path
       redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
     else
-      #render :new
-      redirect_to new_sample_path, notice: '入力に誤りがあります'
+      #render :new 
+
+      redirect_to new_sample_path,notice: '入力に誤りがあります'
 
     end
   end
 
-  #8/24仮作成
+  def edit
+    @sample = Sample.find(params[:id]) 
+
+  end
+  
+  
+  
+  #url貸出返却用
   def update
     @sample = Sample.find(params[:id]) 
     
@@ -28,6 +36,12 @@ class SamplesController < ApplicationController
       redirect_to root_path, notice: '正しく完了しませんでした。戻って正しいロケーションを入力して下さい'
 
     end
+  end
+  
+  #通常サンプル単品編集用
+  def update2
+    @sample = Sample.find(params[:id]) 
+
   end
 
 

@@ -1,8 +1,8 @@
 <div class='new-sample'>
 
-  <%=form_with model: @sample, local: true do |f|%>
+  <%=form_with model: @sample, url:'sample_update2_path', local: true do |f|%>
     <div class='sample-form'>
-      <h1>新規サンプル登録</h1>
+      <h1>サンプル情報変更</h1>
 
       <div class=''>
         <%= f.label :基本コード, class: ''%>
@@ -63,7 +63,7 @@
 
 
 
-        <%= f.submit "新規登録",class: ''%>
+        <%= f.submit "情報変更",class: ''%>
     </div>
     
   <% end %>

@@ -23,7 +23,8 @@
 
         <p class="sea-res2">
           <%= sample.販売商品名 %>　　　
-          <%= sample.カラー %>
+          <%= sample.カラー %>　　　
+          <%= link_to 'サンプル情報変更', edit_sample_path(sample.id),method: :get %>
         </p>
 
       <% end %>
