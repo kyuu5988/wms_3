@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     get 'auto_move_ast' => 'samples#auto_move_ast'
     get 'auto_move_cst' => 'samples#auto_move_cst'
     get 'auto_move_one_sty' => 'samples#auto_move_one_sty'
-    get 'update2' => 'samples#update2'
+    #単品編集用
+    patch 'update2' => 'samples#update2'
   end
 
 

@@ -11,37 +11,35 @@ class SamplesController < ApplicationController
       redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
     else
       #render :new 
-
       redirect_to new_sample_path,notice: '入力に誤りがあります'
-
     end
   end
 
   def edit
     @sample = Sample.find(params[:id]) 
-
   end
-  
   
   
   #url貸出返却用
   def update
-    @sample = Sample.find(params[:id]) 
-    
+    @sample = Sample.find(params[:id])   
     if @sample.update(ロケーション: params[:sample][:ロケーション])
       #↑paramsの中から希望のデータを出している
-      redirect_to root_path, notice: '返却が完了しました。'
-      
+      redirect_to root_path, notice: '返却が完了しました。' 
     else
       redirect_to root_path, notice: '正しく完了しませんでした。戻って正しいロケーションを入力して下さい'
-
     end
   end
   
+
   #通常サンプル単品編集用
   def update2
-    @sample = Sample.find(params[:id]) 
-
+    sample = Sample.find(params[:sample_id]) 
+    if sample.update(sample_params)
+      redirect_to edit_sample_path(sample.id), notice: '正常に変更されました。'
+    else
+      redirect_to edit_sample_path(sample.id), notice: '入力内容が正しくありません。'
+    end
   end
 
 
@@ -50,6 +48,7 @@ class SamplesController < ApplicationController
     @samples = Sample.search(params[:keyword])
     @keyword = (params[:keyword])
   end
+
 
 #ここから独自アクション（自動ロケーション更新機能）
 
@@ -132,7 +131,7 @@ class SamplesController < ApplicationController
   end
 
 
-  #移動結果表示
+  #複数移動結果表示
   def done_move
     @sample = Sample.find(params[:sample_id]) 
     #(idはすでに渡されている)
