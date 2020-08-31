@@ -1,14 +1,18 @@
-
-
   <div class="main_temp">
     <%= render "main" %>
   </div>
 
   <div class="">
-    <p>index</p> 
-    <p class="fin"><%= notice %></p>
+    
+    <p class="fin">　<%= notice %></p>
 
-    <p><%= link_to "サンプル登録", new_sample_path %><br><br></p>
+    <% if current_user.id == 1 ||
+          current_user.id == 3 ||
+          current_user.id == 4 %>
+
+      <p><br><br><%= link_to "サンプル登録", new_sample_path, class: 'btn01' %><br><br></p>
+
+    <% end %>
 
   </div>
 

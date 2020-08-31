@@ -16,7 +16,7 @@
     <%= @sample.カラー %>
     </p>
 
-    <%= link_to "#{@sample.申込番号} の一覧へ戻る" , search_samples_path(keyword:@sample.申込番号 ), class:'btn01' %>
+    <%= link_to "#{@sample.申込番号} の一覧を確認" , search_samples_path(keyword:@sample.申込番号 ), class:'btn01' %>
 
 
 
@@ -25,8 +25,8 @@
       <div class='done-form'>
         <%= f.label :返却する場合はここにロケを入力して下さい %>
       </div>
-      <div class=''>
-        <%= f.text_field :ロケーション, placeholder:'QR or NFC or 直接入力' , maxlength:10, size:16, value:"" %>
+      <div class='field-input'>
+        <%= f.text_field :ロケーション, placeholder:'QR / NFC / 直接入力' , maxlength:10, size:16, value:"" %>
       </div>
 
       <%= f.submit "このロケへ返却", class:'btn01'%>
