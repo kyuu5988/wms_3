@@ -1,7 +1,5 @@
-<%= notice %>
-<p class="fin">貸出処理が完了しました。</p>
-<p>QRによる自動移動は貸出のみです。</p>
-
+<p class="fin"><%= flash[:already] %>
+</p>
 
 <div class="search-list">
     <p class="sea-res">
@@ -18,6 +16,9 @@
     <%= @sample.カラー %>
     </p>
 
+    <%= link_to "#{@sample.申込番号} の一覧へ戻る" , search_samples_path(keyword:@sample.申込番号 ), class:'btn01' %>
+
+
 
   <%=form_with model: @sample , local: true do |f|%>
       
@@ -28,7 +29,7 @@
         <%= f.text_field :ロケーション, placeholder:'QR or NFC or 直接入力' , maxlength:10, size:16, value:"" %>
       </div>
 
-      <%= f.submit "このロケへ返却"%>
+      <%= f.submit "このロケへ返却", class:'btn01'%>
 
 
   <% end %>

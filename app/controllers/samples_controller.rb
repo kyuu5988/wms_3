@@ -118,15 +118,20 @@ class SamplesController < ApplicationController
   #単品移動 stylist
   def auto_move_one_sty
     @sample = Sample.find(params[:sample_id]) 
-    #if @sample[:ロケーション] != "stylist"
+    if @sample[:ロケーション] == "stylist"
+      flash[:already] = "すでに貸出処理されています。"
+      render :done_move_one
+
+    else @sample[:ロケーション] != "stylist"
       @sample.update(ロケーション: "stylist")
       #render plain: @sample[:ロケーション]
+      flash[:already] = "貸出処理が完了しました。"
       render :done_move_one
 
     #elsif @sample[:ロケーション] == "stylist"
       #render :done_move_one
       #redirect_to root_path
-    #end
+    end
 
   end
 

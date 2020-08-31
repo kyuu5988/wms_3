@@ -4,7 +4,7 @@
     <div class='sample-form'>
       <p class="fin"><%= notice %></p><br>
 
-      
+      <%= link_to "#{@sample.申込番号} の一覧へ戻る" , search_samples_path(keyword:@sample.申込番号 ), class:'btn01' %>
 
       <h1>サンプル情報変更</h1>
 
