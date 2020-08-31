@@ -56,6 +56,16 @@
     <div class="fot-btn">
       <%= link_to edit_user_path(current_user) do %>
       ログイン中 : <%= current_user.name %>
+        <!-- ユーザー権限表示 -->
+        <% if current_user.id == 1 ||
+              current_user.id == 3 ||
+              current_user.id == 4 %>
+          <p>権限：管理者</p>
+        <% else %>
+          <p>権限：一般（閲覧・ロケ移動）</p>
+        <% end %>
+
+
       <% end %>
     </div>
 

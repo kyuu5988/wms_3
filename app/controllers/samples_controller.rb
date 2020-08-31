@@ -115,15 +115,15 @@ class SamplesController < ApplicationController
   end
 
 
-  #単品移動 style-list
+  #単品移動 stylist
   def auto_move_one_sty
     @sample = Sample.find(params[:sample_id]) 
-    #if @sample[:ロケーション] != "style-list"
-      @sample.update(ロケーション: "style-list")
+    #if @sample[:ロケーション] != "stylist"
+      @sample.update(ロケーション: "stylist")
       #render plain: @sample[:ロケーション]
       render :done_move_one
 
-    #elsif @sample[:ロケーション] == "style-list"
+    #elsif @sample[:ロケーション] == "stylist"
       #render :done_move_one
       #redirect_to root_path
     #end

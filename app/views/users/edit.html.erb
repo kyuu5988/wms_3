@@ -12,7 +12,7 @@
             <%= f.label :名前%>
           </div>
           <div class='field-input'>
-            <%= f.text_field :name, autofocus: true, size:8 %>
+            <%= f.text_field :name, autofocus: true, size:10 %>
           </div>
         </div>
         <div class='field'>
@@ -20,11 +20,11 @@
             <%= f.label :email%>
           </div>
           <div class='field-input'>
-            <%= f.email_field :email, size:10 %>
+            <%= f.email_field :email, size:12 %>
           </div>
         </div>
         <div class='actions'>
-          <%= f.submit "情報更新", class: 'btn'%>
+          <%= f.submit "情報更新", class: 'btn01'%>
         </div>
       <% end %>
       <p class="fin"> <%= notice %></p>
