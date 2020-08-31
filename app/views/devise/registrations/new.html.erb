@@ -3,7 +3,7 @@
     <div class='account-page__inner--left account-page__header'>
       <h2>wms_3</h2>
       <h5>アカウントを作る</h5>
-      <%= link_to 'TOP画面へ戻る', '/' %>
+      <%= link_to 'ログインへ戻る', '/' , class: 'btn01'%>
     </div>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f|%>
@@ -41,8 +41,8 @@
             <%= f.password_field :password_confirmation, autocomplete: "off", size:10 %>
           </div>
         </div>
-        <div class='actions'>
-          <%= f.submit "アカウント作成", class: 'btn'%>
+        <div>
+          <%= f.submit 'アカウント作成', class: 'btn01' %>
         </div>
       </div>
     <% end %>
