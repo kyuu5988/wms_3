@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   #独自アクション用
 
+  #全てsample_idが必要なのでネストする
   resources :samples do
     #urlアクセスによる自動ロケ移動用
     get 'auto_move_ast' => 'samples#auto_move_ast'
@@ -19,7 +20,10 @@ Rails.application.routes.draw do
     get 'auto_move_one_sty' => 'samples#auto_move_one_sty'
     #単品編集用
     patch 'update2' => 'samples#update2'
+
   end
+  
+  get 'rent_list' => 'samples#rent_list'
 
 
 

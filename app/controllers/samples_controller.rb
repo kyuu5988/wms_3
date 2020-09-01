@@ -159,6 +159,15 @@ class SamplesController < ApplicationController
   end
 
 
+  #貸出リスト
+  def rent_list
+    @samples = Sample.where(rent: current_user[:name]) #指定条件で複数取得
+    flash[:already] = "#{current_user[:name]}【貸出中一覧】"
+
+  end
+
+
+
 
   private
 

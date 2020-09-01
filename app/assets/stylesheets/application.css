@@ -31,7 +31,7 @@ a {
   width: 200px;
   height: 35px;
   background-color: lightsalmon;
-  margin: 5px;
+  margin: 10px 5px 5px 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;

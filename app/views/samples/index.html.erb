@@ -5,6 +5,8 @@
   <div class="">
     
     <p class="fin">　<%= notice %></p>
+    <p class="p02">貸出リスト</p>
+    <p> <%= link_to "自分の貸出確認", rent_list_path, class: 'btn01' %> </p>
 
     <% if current_user.id == 1 ||
           current_user.id == 3 ||
