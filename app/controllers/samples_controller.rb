@@ -25,9 +25,15 @@ class SamplesController < ApplicationController
     @sample = Sample.find(params[:id])   
     if @sample.update(ロケーション: params[:sample][:ロケーション])
       #↑paramsの中から希望のデータを出している
-      redirect_to root_path, notice: '返却が完了しました。' 
+      @sample.update(rent: "(該当無し)" )
+      #↓以前の結果メッセージ
+      #redirect_to root_path, notice: '返却が完了しました。' 
+      flash[:already] = "返却が正常に完了しました。"
+      render :done_move_one
     else
-      redirect_to root_path, notice: '正しく完了しませんでした。戻って正しいロケーションを入力して下さい'
+      flash[:already] = "ロケーション情報を入力して下さい"
+      render :done_move_one
+      #redirect_to root_path, notice: '正しく完了しませんでした。戻って正しいロケーションを入力して下さい'
     end
   end
   
@@ -124,6 +130,7 @@ class SamplesController < ApplicationController
 
     else @sample[:ロケーション] != "stylist"
       @sample.update(ロケーション: "stylist")
+      @sample.update(rent: current_user[:name] )
       #render plain: @sample[:ロケーション]
       flash[:already] = "貸出処理が完了しました。"
       render :done_move_one
