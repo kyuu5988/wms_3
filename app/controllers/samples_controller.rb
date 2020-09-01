@@ -3,7 +3,7 @@ class SamplesController < ApplicationController
   def new
     @sample = Sample.new
   end
-
+  #サンプル登録
   def create
     @sample = Sample.new(sample_params)
     if @sample.save

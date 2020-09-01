@@ -2,6 +2,8 @@
 
   <%=form_with model: @sample, local: true do |f|%>
     <div class='sample-form'>
+      <p class="fin"><%= notice %></p><br>
+
       <h1>新規サンプル登録</h1>
 
       <div class=''>
@@ -63,10 +65,9 @@
 
 
 
-        <%= f.submit "新規登録",class: ''%>
+        <%= f.submit "新規登録",class: 'btn01'%>
     </div>
     
   <% end %>
-  <p class="fin"><%= notice %></p><br>
   
 </div>
