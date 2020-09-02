@@ -4,7 +4,7 @@
     </div>
     <h2>検索結果（無入力時 全データ表示）</h2>
     <%= notice %>
-    <p class="p02">"<%= @keyword %>"で検索しています。</p>
+    <p class="p02">　"<%= @keyword %>"で検索しています。</p>
 
 
     <div class="search-list">
@@ -33,6 +33,10 @@
           <% end %>     
     
         </p>
+        <% if sample.rent != "(該当無し)" &&
+              sample.rent != "" %>
+          <p class="fin">　貸出中：<%= sample.rent %></p>
+        <% end %>
 
       <% end %>
         <p><%= count %>件見つかりました。</p>
