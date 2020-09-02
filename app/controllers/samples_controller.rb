@@ -112,24 +112,37 @@ class SamplesController < ApplicationController
 
     #arr = [] #動作確認用
     @products = Sample.where(申込番号: no) #指定条件で複数取得
-    if @products[0][:ロケーション] == "C-STUDIO"
-      @products.update(ロケーション: "INV-4F")
+
+    @products.each do |pro|
+      if pro[:ロケーション] == "stylist"
+
+      elsif pro[:ロケーション] == "C-STUDIO"
+        pro.update(ロケーション: "INV-4F")
+
+      elsif pro[:ロケーション] != "C-STUDIO"
+        pro.update(ロケーション: "C-STUDIO")
+
+      
+      end
+    end
+    render :done_move
+
+    #このしたは以前の分
+    #if @products[0][:ロケーション] == "C-STUDIO"
+      #@products.update(ロケーション: "INV-4F")
       #↑利用時はコメントアウト外す（これで指定カラムの値変更）
       #arr << @products[0][:ロケーション] #確認用
       #取得したレコードのn番目の指定カラム
       #render plain: arr #確認用
-      render :done_move
+      #render :done_move
 
-    elsif @products[0][:ロケーション] != "C-STUDIO"   
-      @products.update(ロケーション: "C-STUDIO")
-      render :done_move
-
-
-    else
-      #redirect_to root_path
-      text = "移動エラーです。南に聞いてください"
-      render plain: text
-    end
+    #elsif @products[0][:ロケーション] != "C-STUDIO"   
+      #@products.update(ロケーション: "C-STUDIO")
+      #render :done_move
+    #else
+      #text = "移動エラーです。南に聞いてください"
+      #render plain: text
+    #end
 
   end
 
