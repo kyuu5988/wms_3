@@ -65,27 +65,40 @@ class SamplesController < ApplicationController
     #3000/samples/id/auto_move_astでレコード指定
 
     no = @sample[:申込番号] #[]を使ってカラムを指定 
-
     #arr = [] #動作確認用
     @products = Sample.where(申込番号: no) #指定条件で複数取得
-    if @products[0][:ロケーション] == "A-STUDIO"
-      @products.update(ロケーション: "INV-4F")
+    
+    @products.each do |pro|
+      if pro[:ロケーション] == "stylist"
+
+      elsif pro[:ロケーション] == "A-STUDIO"
+        pro.update(ロケーション: "INV-4F")
+
+      elsif pro[:ロケーション] != "A-STUDIO"
+        pro.update(ロケーション: "A-STUDIO")
+
+      
+      end
+    end
+    render :done_move
+
+      #このしたは以前の分
+    #if @products[0][:ロケーション] == "A-STUDIO"
+      #@products.update(ロケーション: "INV-4F")
       #↑利用時はコメントアウト外す（これで指定カラムの値変更）
       #arr << @products[0][:ロケーション] #確認用
       #取得したレコードのn番目の指定カラム
       #render plain: arr #確認用
-      render :done_move
+      #render :done_move
+    #elsif @products[0][:ロケーション] != "A-STUDIO"   
+      #@products.update(ロケーション: "A-STUDIO")
+      #render :done_move
 
-    elsif @products[0][:ロケーション] != "A-STUDIO"   
-      @products.update(ロケーション: "A-STUDIO")
-      render :done_move
 
-
-    else
-      #redirect_to root_path
-      text = "移動エラーです。南に聞いてください"
-      render plain: text
-    end
+    #else
+      #text = "移動エラーです。南に聞いてください"
+      #render plain: text
+    #end
 
   end
 

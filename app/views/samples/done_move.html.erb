@@ -15,5 +15,11 @@
     <%= prod.カラー %>
     </p>
 
+    <% if prod.rent != "(該当無し)" &&
+          prod.rent != "" %>
+      <p class="fin">　貸出中：<%= prod.rent %></p>
+    <% end %>
+
+
   <% end %>
 </div>
