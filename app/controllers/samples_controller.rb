@@ -10,8 +10,9 @@ class SamplesController < ApplicationController
       #redirect_to root_path
       redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
     else
-      #render :new 
-      redirect_to new_sample_path,notice: '入力に誤りがあります'
+      flash[:already] = "入力内容に不備があります。"
+      render :new #バリデーションのエラー表示はこっち
+      #redirect_to new_sample_path,notice: '入力に誤りがあります'
     end
   end
 
