@@ -23,9 +23,12 @@ header,footer{
   background-color: lightgoldenrodyellow;
 }
 
+// ↓スマホには適している・PC用は要変更
 .sea-res2 {
   margin-bottom: 3px;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
 .fin {
