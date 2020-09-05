@@ -12,7 +12,7 @@
         <p class="fin" ><%= @sample.errors.messages[:基本コード][0] %>
       </div>
       <div class='field-input'>
-        <%= f.text_field :基本コード, class: '', placeholder: '10桁',size: 16 , maxlength:10, autocomplete: "off" %>
+        <%= f.text_field :基本コード, class: '', placeholder: '10桁',size: 12 , maxlength:10, autocomplete: "off" %>
       </div>
 
       <div class=''>
@@ -21,33 +21,36 @@
 
       </div>
       <div class='field-input'>
-        <%= f.text_field :サブコード, class: '', placeholder: '3桁',size: 5 , maxlength:3 %>
+        <%= f.text_field :サブコード, class: '', placeholder: '3桁',size: 4 , maxlength:3 %>
       </div>
 
       <div class=''>
         <%= f.label :個別番号, class: ''%>
+        <p class="fin" ><%= @sample.errors.messages[:個別番号][0] %>
       </div>
       <div class='field-input'>
-        <%= f.text_field :個別番号, class: '', placeholder: '2桁',size:3,maxlength:2 %>
+        <%= f.text_field :個別番号, class: '', placeholder: '2桁まで',size:3,maxlength:2 %>
       </div>
 
       <div class=''>
         <%= f.label :申込番号, class: ''%>
+        <p class="fin" ><%= @sample.errors.messages[:申込番号][0] %>
       </div>
       <div class='field-input'>
-        <%= f.text_field :申込番号, class: '', placeholder: '6桁',size:12,maxlength:6 %>
+        <%= f.text_field :申込番号, class: '', placeholder: '6桁',size:8,maxlength:6 %>
       </div>
 
       <div class=''>
         <%= f.label :販売商品名, class: ''%>
       </div>
       <div class='field-input'>
-        <%= f.text_field :販売商品名, class: '', placeholder: '販売商品名', size:16 %>
+        <%= f.text_field :販売商品名, class: '', placeholder: '入力必須です', size:16 %>
       </div>
 
 
       <div class=''>
         <%= f.label :カテゴリー番号, class: ''%>
+        <p class="fin" ><%= @sample.errors.messages[:カテゴリー][0] %>
       </div>
       <div class='field-input'>
         <%= f.text_field :カテゴリー, class: '', placeholder: '2桁',size:3,maxlength:2 %>
@@ -62,9 +65,10 @@
 
       <div class=''>
         <%= f.label :ロケーション, class: ''%>
+        <p class="fin" ><%= @sample.errors.messages[:ロケーション][0] %>
       </div>
       <div class='field-input'>
-        <%= f.text_field :ロケーション, size:16 %>
+        <%= f.text_field :ロケーション, placeholder:'入力必須です' ,size:10 %>
       </div>
 
 
