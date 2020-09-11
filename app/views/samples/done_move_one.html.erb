@@ -19,20 +19,20 @@
 
     <%= link_to "#{@sample.申込番号} の一覧を確認" , search_samples_path(keyword:@sample.申込番号 ), class:'btn01' %>
 
+  <%# 貸出本人だけが返却できるようにする %>
+  <% if current_user.name == @sample.rent %>
+    <%=form_with model: @sample , local: true do |f|%>
+        
+        <div class='done-form'>
+          <%= f.label :返却する場合はここにロケを入力して下さい %>
+        </div>
+        <div class='field-input'>
+          <%= f.text_field :ロケーション, placeholder:'QR / NFC / 直接入力' , maxlength:10, size:16, value:"" %>
+        </div>
 
+        <%= f.submit "このロケへ返却", class:'btn01'%>
 
-  <%=form_with model: @sample , local: true do |f|%>
-      
-      <div class='done-form'>
-        <%= f.label :返却する場合はここにロケを入力して下さい %>
-      </div>
-      <div class='field-input'>
-        <%= f.text_field :ロケーション, placeholder:'QR / NFC / 直接入力' , maxlength:10, size:16, value:"" %>
-      </div>
-
-      <%= f.submit "このロケへ返却", class:'btn01'%>
-
-
+    <% end %>
   <% end %>
 
 

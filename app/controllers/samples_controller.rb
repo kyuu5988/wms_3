@@ -38,7 +38,6 @@ class SamplesController < ApplicationController
     end
   end
   
-
   #通常サンプル単品編集用
   def update2
     sample = Sample.find(params[:sample_id]) 
@@ -49,8 +48,6 @@ class SamplesController < ApplicationController
     end
   end
 
-
-
   def search
     @samples = Sample.search(params[:keyword])
     @keyword = (params[:keyword])
@@ -59,9 +56,8 @@ class SamplesController < ApplicationController
 
 #ここから独自アクション（自動ロケーション更新機能）
 
-  #同品番、同時変更 A-ST
+  #同品番、同時変更 (移動先 = 所属)
   def auto_move_ast
-
     @sample = Sample.find(params[:sample_id]) 
     #3000/samples/id/auto_move_astでレコード指定
 
@@ -70,15 +66,19 @@ class SamplesController < ApplicationController
     @products = Sample.where(申込番号: no) #指定条件で複数取得
     
     @products.each do |pro|
-      if pro[:ロケーション] == "stylist"
+      if pro[:ロケーション] == "stylist" ||
+         pro[:ロケーション] == "Cast" ||
+         pro[:ロケーション] == "Still Image" ||
+         pro[:ロケーション] == "Promotion"
+         #何もしない（ロケ移動できない）
 
-      elsif pro[:ロケーション] == "A-STUDIO"
-        pro.update(ロケーション: "INV-4F")
-
-      elsif pro[:ロケーション] != "A-STUDIO"
-        pro.update(ロケーション: "A-STUDIO")
-
-      
+      else
+        pro.update(ロケーション: current_user[:group] )
+      #以前の記述
+      # elsif pro[:ロケーション] == "A-STUDIO"
+        # pro.update(ロケーション: "INV-4F")
+      # elsif pro[:ロケーション] != "A-STUDIO"
+        # pro.update(ロケーション: "A-STUDIO")
       end
     end
     render :done_move
@@ -103,7 +103,7 @@ class SamplesController < ApplicationController
 
   end
 
-  #同時移動 C-ST
+  #同時移動 C-ST (一時使用見合わせ)
   def auto_move_cst
 
     @sample = Sample.find(params[:sample_id]) 
@@ -148,15 +148,20 @@ class SamplesController < ApplicationController
   end
 
 
-  #単品移動 stylist
+  #単品貸出用
   def auto_move_one_sty
     @sample = Sample.find(params[:sample_id]) 
-    if @sample[:ロケーション] == "stylist"
+    if @sample[:ロケーション] == "stylist" ||
+       @sample[:ロケーション] == "Cast" ||
+       @sample[:ロケーション] == "Still Image" ||
+       @sample[:ロケーション] == "Promotion" #||
+       #@sample[:ロケーション] == "Inventory"
+
       flash[:already] = "すでに貸出処理されています。"
       render :done_move_one
 
-    else @sample[:ロケーション] != "stylist"
-      @sample.update(ロケーション: "stylist")
+    else #@sample[:ロケーション] 
+      @sample.update(ロケーション: current_user[:group] )
       @sample.update(rent: current_user[:name] )
       #render plain: @sample[:ロケーション]
       flash[:already] = "貸出処理が完了しました。"
