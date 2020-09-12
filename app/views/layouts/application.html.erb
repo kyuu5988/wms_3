@@ -59,12 +59,12 @@
         <!-- 管理者権限ユーザー一覧 -->
         <% if current_user.id == 1 ||
               current_user.id == 3 ||
-              current_user.id == 4 %>
+              current_user.id == 4 ||
+              current_user.id == 12 %>
           <p>権限：管理者</p>
         <% else %>
           <p>権限：一般（閲覧・ロケ移動）</p>
         <% end %>
-
 
       <% end %>
     </div>

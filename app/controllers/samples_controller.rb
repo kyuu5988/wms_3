@@ -7,6 +7,7 @@ class SamplesController < ApplicationController
   def create
     @sample = Sample.new(sample_params)
     if @sample.save
+      @sample.update(rent: "")
       #redirect_to root_path
       redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
     else
@@ -26,7 +27,7 @@ class SamplesController < ApplicationController
     @sample = Sample.find(params[:id])   
     if @sample.update(ロケーション: params[:sample][:ロケーション])
       #↑paramsの中から希望のデータを出している
-      @sample.update(rent: "(該当無し)" )
+      @sample.update(rent: "" )
       #↓以前の結果メッセージ
       #redirect_to root_path, notice: '返却が完了しました。' 
       flash[:already] = "返却が正常に完了しました。"
@@ -204,7 +205,7 @@ class SamplesController < ApplicationController
   private
 
   def sample_params
-    params.require(:sample).permit(:基本コード, :サブコード, :個別番号, :申込番号, :販売商品名, :カテゴリー, :カラー, :ロケーション)
+    params.require(:sample).permit(:基本コード, :サブコード, :個別番号, :申込番号, :販売商品名, :カテゴリー, :カラー, :ロケーション, :rent)
   end
 
 
