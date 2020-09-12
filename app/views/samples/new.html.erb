@@ -65,10 +65,11 @@
 
       <div class=''>
         <%= f.label :ロケーション, class: ''%>
-        <p class="fin" ><%= @sample.errors.messages[:ロケーション][0] %>
       </div>
       <div class='field-input'>
-        <%= f.text_field :ロケーション, placeholder:'入力必須です' ,size:10 %>
+        <%# 以下は以前の手動入力。現在はプルダウン試験中 %>
+        <!--%= f.text_field :ロケーション, placeholder:'入力必須です' ,size:10 %-->
+        <%= f.select :ロケーション, { '1ロケ': "11111111", '2ロケ': "22222222" }, { include_blank: 'どちらか選択' }, { class:'', required: true } %>
       </div>
 
 

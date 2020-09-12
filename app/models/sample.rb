@@ -23,16 +23,16 @@ class Sample < ApplicationRecord
 
   validates :申込番号, length:{ minimum: 6, message:'6桁ありません' }, format: { with: /\A\d{6}/, message: '半角数字のみ登録可' }
 
-  validates :販売商品名, presence: true
+  validates :販売商品名, :ロケーション, presence: true
 
   validates :カテゴリー, length:{ minimum: 2, message:'2桁ありません' }, format: { with: /\A\d{2}/, message: '半角数字のみ登録可' }
 
-  #現在エラー原因調査中 保存できたい現象
+  #現在エラー原因調査中 ロケーション保存できたい現象（自動移動）
   #validates :ロケーション, format: { with: /\A\w+\z/, message: '半角英数字のみ登録可' }
 
 
   #この記述だと保存できる
-  validates :カテゴリー, :ロケーション, presence: true
+  #validates :ロケーション, presence: true
 
 
 

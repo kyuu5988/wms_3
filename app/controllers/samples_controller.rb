@@ -82,6 +82,7 @@ class SamplesController < ApplicationController
         # pro.update(ロケーション: "A-STUDIO")
       end
     end
+    flash[:already] = "ロケーションの移動が完了しました。"
     render :done_move
 
       #このしたは以前の分
