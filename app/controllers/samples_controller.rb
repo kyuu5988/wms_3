@@ -21,7 +21,6 @@ class SamplesController < ApplicationController
     @sample = Sample.find(params[:id]) 
   end
   
-  
   #url貸出返却用
   def update
     @sample = Sample.find(params[:id])   
@@ -59,32 +58,42 @@ class SamplesController < ApplicationController
 
   #同品番、同時変更 (移動先 = 所属)
   def auto_move_ast
-    @sample = Sample.find(params[:sample_id]) 
-    #3000/samples/id/auto_move_astでレコード指定
+    if current_user[:group] == "Stylist" ||
+       current_user[:group] == "Cast" ||
+       current_user[:group] == "Still Image" ||
+       current_user[:group] == "Promotion"
+       #何もしない（ロケ移動できない）
+       #flash[:already] = "権限がありません。（スタジオ移動のコードです）"
+       redirect_to root_path, notice: "権限がありません。ST移動用コードです"
 
-    no = @sample[:申込番号] #[]を使ってカラムを指定 
-    #arr = [] #動作確認用
-    @products = Sample.where(申込番号: no) #指定条件で複数取得
-    
-    @products.each do |pro|
-      if pro[:ロケーション] == "stylist" ||
-         pro[:ロケーション] == "Cast" ||
-         pro[:ロケーション] == "Still Image" ||
-         pro[:ロケーション] == "Promotion"
-         #何もしない（ロケ移動できない）
+    else
+      @sample = Sample.find(params[:sample_id]) 
+      #3000/samples/id/auto_move_astでレコード指定
+      no = @sample[:申込番号] #[]を使ってカラムを指定 
+      #arr = [] #動作確認用
+      @products = Sample.where(申込番号: no) #指定条件で複数取得
+      
+      @products.each do |pro|
+        if pro[:ロケーション] == "Stylist" ||
+           pro[:ロケーション] == "Cast" ||
+           pro[:ロケーション] == "Still Image" ||
+           pro[:ロケーション] == "Promotion"
+           #何もしない（ロケ移動できない）
 
-      else
-        pro.update(ロケーション: current_user[:group] )
-      #以前の記述
-      # elsif pro[:ロケーション] == "A-STUDIO"
-        # pro.update(ロケーション: "INV-4F")
-      # elsif pro[:ロケーション] != "A-STUDIO"
-        # pro.update(ロケーション: "A-STUDIO")
+        else
+          pro.update(ロケーション: current_user[:group] )
+          #以前の記述
+          # elsif pro[:ロケーション] == "A-STUDIO"
+            # pro.update(ロケーション: "INV-4F")
+          # elsif pro[:ロケーション] != "A-STUDIO"
+            # pro.update(ロケーション: "A-STUDIO")
+        end
+
+      
       end
+      flash[:already] = "ロケーションの移動が完了しました。"
+      render :done_move
     end
-    flash[:already] = "ロケーションの移動が完了しました。"
-    render :done_move
-
       #このしたは以前の分
     #if @products[0][:ロケーション] == "A-STUDIO"
       #@products.update(ロケーション: "INV-4F")
@@ -153,7 +162,7 @@ class SamplesController < ApplicationController
   #単品貸出用
   def auto_move_one_sty
     @sample = Sample.find(params[:sample_id]) 
-    if @sample[:ロケーション] == "stylist" ||
+    if @sample[:ロケーション] == "Stylist" ||
        @sample[:ロケーション] == "Cast" ||
        @sample[:ロケーション] == "Still Image" ||
        @sample[:ロケーション] == "Promotion" #||
@@ -197,10 +206,7 @@ class SamplesController < ApplicationController
   def rent_list
     @samples = Sample.where(rent: current_user[:name]) #指定条件で複数取得
     flash[:already] = "　#{current_user[:name]}【貸出中一覧】"
-
   end
-
-
 
 
   private
