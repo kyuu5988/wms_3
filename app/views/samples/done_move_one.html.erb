@@ -24,7 +24,7 @@
     <%=form_with model: @sample , local: true do |f|%>
         
         <div class='done-form'>
-          <%= f.label :返却する場合はここにロケを入力して下さい %>
+          <%= f.label :バーコードで返却する場合はこちら %>
         </div>
         <div class='field-input'>
           <%= f.text_field :ロケーション, placeholder:'QR / NFC / 直接入力' , maxlength:10, size:16, value:"" %>
@@ -33,7 +33,28 @@
         <%= f.submit "このロケへ返却", class:'btn01'%>
 
     <% end %>
-  <% end %>
 
+    <!-- プルダウン返却追加 -->
+        <!-- 同品番のあるロケをプルダウンで返却先に指定 -->
+        <%=form_with model: @sample , local: true do |f|%>
+        
+          <div class='done-form'>
+            <%= @sample.申込番号 %> <%= f.label :の他サブ保管先へ返却 %>
+          </div>
+          <div class='field-input'>
+            <%= f.collection_select :ロケーション,
+             Sample.where(申込番号: @sample.申込番号)
+             .where.not(id: @sample.id )
+             .where.not( ロケーション: "Still Image" )
+             .where.not( ロケーション: "Cast" )
+             .where.not( ロケーション: "Stylist" )
+             .where.not( ロケーション: "Promotion" ),
+              :ロケーション, :ロケーション %>
+          </div>
+          <%= f.submit "このロケへ返却", class:'btn01'%>
+
+        <% end %>
+
+  <% end %>
 
 </div>
