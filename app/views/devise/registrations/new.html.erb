@@ -22,7 +22,10 @@
             <%= f.label :所属部署%>
           </div>
           <div class='field-input'>
-            <%= f.text_field :group, autofocus: true, size:8 %>
+            <!-- 以前の設定 -->
+            <!--%= f.text_field :group, autofocus: true, size:8 %-->
+            <!-- プルダウンでDBから選ぶ / 重複は除く -->
+            <%= f.collection_select :group, User.select(:group).distinct, :group, :group %>
           </div>
         </div>
 
@@ -59,3 +62,4 @@
     <% end %>
   </div>
 </div>
+
