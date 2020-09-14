@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
   # userテーブルにカラムを追加したらここでデータ保存の許可をする↓
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:group])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:group,:mode])
   end
   
 
