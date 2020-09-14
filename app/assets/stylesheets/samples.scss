@@ -23,6 +23,10 @@ header,footer{
   background-color: lightgoldenrodyellow;
 }
 
+.mode-menu {
+  display: flex;
+}
+
 // ↓スマホには適している・PC用は要変更
 .sea-res2 {
   margin-bottom: 3px;
@@ -53,6 +57,17 @@ header,footer{
   background-color: lightskyblue;
   color: aliceblue;
   width: auto;
-  margin: 3px 5px 3px 10px;
+  margin: 3px 5px 10px 10px;
   border: 1px solid black;
+  box-shadow: 2px 2px 1px  darkslategray;
+  border-radius: 4px;
 }
+
+.btn01:hover {
+  background-color: darkorange;
+  color: aliceblue;
+  width: auto;
+  margin: 3px 5px 3px 10px;
+  border: 2px dotted black;
+}
+

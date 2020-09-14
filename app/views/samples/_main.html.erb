@@ -1,1 +1,26 @@
-<p class="p02">これはベータバージョンです。***_main.html.erb***</p>
+    <div class=''>
+    
+    <% if current_user.group == "Inventory" %>
+      <!--モード切替機能(Inventory専用)-->
+      <%= form_with model: current_user, local: true do |f|%>
+        <div class='mode-menu'>
+          
+          <div class='field-label'>
+            <%= f.label :現在のモード%>
+          </div>
+
+          <div class='field-input'>
+            <%= f.select :mode, ['SYUKA-A','SYUKA-C'] %>              
+          </div>
+
+          <div class=''>
+           <%= f.submit "モード切替", class:'btn01' %>
+          </div>
+
+        </div>
+
+      <% end %>
+
+    <% end %>
+
+    </div>

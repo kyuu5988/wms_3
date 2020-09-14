@@ -47,6 +47,17 @@ a {
   color: aliceblue;
   width: 50px;
   margin-left: 10px;
+  box-shadow: 2px 2px 1px  darkslategray;
+  border-radius: 4px;
+}
+
+.search-btn:hover {
+  background-color: darkorange;
+  color: aliceblue;
+  width: 50px;
+  margin-left: 10px;
+  box-shadow: 2px 2px 1px  darkslategray;
+  border-radius: 4px;
 }
 
 
@@ -71,5 +82,19 @@ footer {
   margin: 10px;
   border: 2px solid white;
   text-decoration: none;
+  box-shadow: 2px 2px 1px  darkslategray;
+  border-radius: 4px;
+
+}
+
+.fot-btn:hover {
+  background-color: darkorange;
+  color: aliceblue;
+  width: fit-content;
+  margin: 10px;
+  border: 2px solid white;
+  text-decoration: none;
+  box-shadow: 2px 2px 1px  darkslategray;
+  border-radius: 4px;
 
 }
