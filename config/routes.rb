@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   resources :samples do
     #urlアクセスによる自動ロケ移動用
     get 'auto_move_ast' => 'samples#auto_move_ast'
-    get 'auto_move_cst' => 'samples#auto_move_cst'
+    #現在自動移動のリンクを一つに制限し他条件でロケ情報を指定する仕様
+    #get 'auto_move_cst' => 'samples#auto_move_cst'
     get 'auto_move_one_sty' => 'samples#auto_move_one_sty'
     #単品編集用
     patch 'update2' => 'samples#update2'

@@ -27,7 +27,7 @@ class Sample < ApplicationRecord
 
   validates :カテゴリー, length:{ minimum: 2, message:'2桁ありません' }, format: { with: /\A\d{2}/, message: '半角数字のみ登録可' }
 
-  #現在エラー原因調査中 ロケーション保存できたい現象（自動移動）
+  #現在エラー原因調査中 ロケーション保存できない現象（自動移動）
   #validates :ロケーション, format: { with: /\A\w+\z/, message: '半角英数字のみ登録可' }
 
 
