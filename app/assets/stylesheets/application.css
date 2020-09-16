@@ -49,6 +49,7 @@ a {
   margin-left: 10px;
   box-shadow: 2px 2px 1px  darkslategray;
   border-radius: 4px;
+  cursor: cell;
 }
 
 .search-btn:hover {
@@ -84,7 +85,7 @@ footer {
   text-decoration: none;
   box-shadow: 2px 2px 1px  darkslategray;
   border-radius: 4px;
-
+  cursor: cell;
 }
 
 .fot-btn:hover {
@@ -96,5 +97,5 @@ footer {
   text-decoration: none;
   box-shadow: 2px 2px 1px  darkslategray;
   border-radius: 4px;
-
+  cursor: cell;
 }

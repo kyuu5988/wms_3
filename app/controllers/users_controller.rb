@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   #モード切替
-  #重複記録を解決したい
   def mode
     user = User.find(current_user.id)
     user.update(mode:params[:mode])
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
     #更新したレコードを取得
     user_mode = User.find(current_user.id)
     render json: { mode: user_mode }   
-
+  
   end
 
   private

@@ -9,11 +9,13 @@
             <%= f.select :mode, ['SYUKA-A','SYUKA-C','Item-Schedule'], { selected: current_user.mode } %>              
           </div>
 
-          <div class='' id="mode-btn">
-           <%= f.submit "モード切替", class:'btn01' %>
+          <div class="btn01" id="mode-btn">
+            <p>モード切替</p>
+          <%# 以前のボタン↓ %>
+           <!--%= f.submit "モード切替", class:'btn01' %-->
           </div>
 
-          <div class="" id="mode-now" >
+          <div class="mode-now" id="mode-now" >
             <p><%= current_user.mode %></p>
           </div>
 
