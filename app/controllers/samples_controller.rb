@@ -159,7 +159,7 @@ class SamplesController < ApplicationController
   end
 
 
-  #単品貸出用
+  #単品貸出 / pick用
   def auto_move_one_sty
     @sample = Sample.find(params[:sample_id]) 
     if @sample[:ロケーション] == "Stylist" ||
@@ -168,9 +168,19 @@ class SamplesController < ApplicationController
        @sample[:ロケーション] == "Promotion" #||
        #@sample[:ロケーション] == "Inventory"
 
-      flash[:already] = "すでに貸出処理されています。"
+      flash[:already] = "#{@sample.rent}がすでに貸出処理されています。"
       render :done_move_one
 
+    #集荷モード用
+    elsif current_user.mode == "SYUKA-A" ||
+          current_user.mode == "SYUKA-C"
+
+      @sample.update(ロケーション: current_user[:mode] )
+      flash[:already] = "#{current_user[:mode]}へpickしました"
+      render :done_move_one
+
+
+    #貸出処理用
     else #@sample[:ロケーション] 
       @sample.update(ロケーション: current_user[:group] )
       @sample.update(rent: current_user[:name] )

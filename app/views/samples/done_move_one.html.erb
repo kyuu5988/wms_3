@@ -1,6 +1,10 @@
+  <div class="main_temp">
+    <%= render "main" %>
+  </div>
+
 <p class="fin"><%= flash[:already] %>
 </p>
-<p class="p02">貸出中：<%= @sample.rent %></p>
+<!--p class="p02">貸出中：<%= @sample.rent %></p-->
 
 <div class="search-list">
     <p class="sea-res">
@@ -19,8 +23,11 @@
 
     <%= link_to "#{@sample.申込番号} の一覧を確認" , search_samples_path(keyword:@sample.申込番号 ), class:'btn01' %>
 
-  <%# 貸出本人だけが返却できるようにする %>
-  <% if current_user.name == @sample.rent %>
+  <%# 貸出本人/pick時だけが返却できるようにする %>
+  <% if current_user.name == @sample.rent ||
+        current_user.mode == "SYUKA-A" ||
+        current_user.mode == "SYUKA-C" %>
+
     <%=form_with model: @sample , local: true do |f|%>
         
         <div class='done-form'>
