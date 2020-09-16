@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   get 'rent_list' => 'samples#rent_list'
 
 
+  #モード切替
+  post 'mode' => 'users#mode'
+
 
   resources :users, only: [:edit, :update]
 

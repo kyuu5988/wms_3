@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     end
   end
 
+  #モード切替
+  def mode
+    user = User.find(current_user.id)
+    user.update(mode:params[:mode])
+  end
 
   private
 

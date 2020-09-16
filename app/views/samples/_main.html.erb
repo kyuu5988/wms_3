@@ -2,19 +2,19 @@
     
     <% if current_user.group == "Inventory" %>
       <!--モード切替機能(Inventory専用)-->
-      <%= form_with model: current_user, local: true do |f|%>
+      <%= form_with url: "/mode", method: :post, id:"mode" do |f|%>
         <div class='mode-menu'>
           
-          <div class='field-label'>
-            <%= f.label :現在のモード%>
-          </div>
-
           <div class='field-input'>
-            <%= f.select :mode, ['SYUKA-A','SYUKA-C'] %>              
+            <%= f.select :mode, ['SYUKA-A','SYUKA-C','Item-Schedule'], { selected: current_user.mode } %>              
           </div>
 
           <div class=''>
            <%= f.submit "モード切替", class:'btn01' %>
+          </div>
+
+          <div class="" id="" >
+            <p>切替完了</p>
           </div>
 
         </div>
