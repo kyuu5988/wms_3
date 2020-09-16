@@ -56,7 +56,7 @@ class SamplesController < ApplicationController
 
 #ここから独自アクション（自動ロケーション更新機能）
 
-  #同品番、同時変更 (移動先 = 所属)
+  #同品番、同時変更 (移動先 = 所属/モード次第)
   def auto_move_ast
     if current_user[:group] == "Stylist" ||
        current_user[:group] == "Cast" ||
@@ -70,8 +70,7 @@ class SamplesController < ApplicationController
       @sample = Sample.find(params[:sample_id]) 
       #3000/samples/id/auto_move_astでレコード指定
       no = @sample[:申込番号] #[]を使ってカラムを指定 
-      #arr = [] #動作確認用
-      @products = Sample.where(申込番号: no) #指定条件で複数取得
+      @products = Sample.where(申込番号: no) #同品番を取得
       
       @products.each do |pro|
         if pro[:ロケーション] == "Stylist" ||
@@ -79,38 +78,25 @@ class SamplesController < ApplicationController
            pro[:ロケーション] == "Still Image" ||
            pro[:ロケーション] == "Promotion"
            #何もしない（ロケ移動できない）
+           flash[:already] = "貸出中です。"
 
         else
-          pro.update(ロケーション: current_user[:group] )
-          #以前の記述
-          # elsif pro[:ロケーション] == "A-STUDIO"
-            # pro.update(ロケーション: "INV-4F")
-          # elsif pro[:ロケーション] != "A-STUDIO"
-            # pro.update(ロケーション: "A-STUDIO")
+          # inv pick用
+          if current_user.mode == "SYUKA-A" ||
+             current_user.mode == "SYUKA-C"
+
+            pro.update(ロケーション: current_user[:mode])  
+            flash[:already] = "#{current_user[:mode]}へpickしました"
+          else
+            pro.update(ロケーション: current_user[:group] )
+            flash[:already] = "ロケーションの移動が完了しました。"
+          end
+
         end
 
-      
       end
-      flash[:already] = "ロケーションの移動が完了しました。"
-      render :done_move
+      render :done_move #記述は一つのみ
     end
-      #このしたは以前の分
-    #if @products[0][:ロケーション] == "A-STUDIO"
-      #@products.update(ロケーション: "INV-4F")
-      #↑利用時はコメントアウト外す（これで指定カラムの値変更）
-      #arr << @products[0][:ロケーション] #確認用
-      #取得したレコードのn番目の指定カラム
-      #render plain: arr #確認用
-      #render :done_move
-    #elsif @products[0][:ロケーション] != "A-STUDIO"   
-      #@products.update(ロケーション: "A-STUDIO")
-      #render :done_move
-
-
-    #else
-      #text = "移動エラーです。南に聞いてください"
-      #render plain: text
-    #end
 
   end
 
