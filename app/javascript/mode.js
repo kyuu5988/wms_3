@@ -1,7 +1,14 @@
 function mode(){
   const modeBtn = document.getElementById("mode-btn");
 
-  modeBtn.addEventListener("click",function(){
+  //毎秒読み込み重複動作防止（有効か確かではない
+  if (modeBtn.getAttribute("load") != null ){
+    return null;
+  }
+  modeBtn.setAttribute("load","true");
+  //ここまで
+
+  modeBtn.addEventListener("click", (e) => {
     const modeNow = document.getElementById("mode-now");
     const formData = new FormData(document.getElementById("mode"));
     const XHR = new XMLHttpRequest();
@@ -19,12 +26,16 @@ function mode(){
 
       const userMode = XHR.response.mode;
 
-      modeNow.innerHTML = "aaaa"
+      modeNow.innerHTML = userMode.mode
+    
+    //↓重複防止だが有効ではない模様
+    e.preventDefault();
+
 
 
     }
   });
 
 }
-
-window.addEventListener("load",mode);
+setInterval(mode, 2000);
+//window.addEventListener("load",mode);
