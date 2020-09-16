@@ -18,6 +18,10 @@ class UsersController < ApplicationController
   def mode
     user = User.find(current_user.id)
     user.update(mode:params[:mode])
+
+    #更新したレコードを取得
+    user_mode = User.find(current_user.id)
+    render json: { mode: user_mode }
   end
 
   private
