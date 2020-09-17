@@ -27,6 +27,18 @@ header,footer{
   display: flex;
 }
 
+.menu {
+  font-size: 13px;
+  background-color: darkblue;
+  color: white;
+  height: 22px;
+  width: auto;
+  margin: 5px;
+  box-shadow: 2px 2px 1px  silver;
+  border-radius: 4px;
+  padding: 1px;
+}
+
 // ↓スマホには適している・PC用は要変更
 .sea-res2 {
   margin-bottom: 3px;

@@ -4,16 +4,32 @@
 
   <div class="">
     <p class="fin">　<%= notice %></p>
-    <p class="p02">貸出リスト</p>
+    <p class="menu">共通メニュー</p>
+    <% if current_user.group == "Cast" ||
+          current_user.group == "Still Image" ||
+          current_user.group == "Promotion" ||
+          current_user.group == "Stylist" %>
     <p> <%= link_to "自分の貸出確認", rent_list_path, class: 'btn01' %> </p><br><br>
+    <% else %>
 
-    <% if current_user.id == 1 ||
-          current_user.id == 3 ||
-          current_user.id == 4 ||
-          current_user.id == 12 %>
+    <div class="field-input">
+      <p>貸出リストを確認する</p>
+      <%= form_with(url: rent_list_path, local: true, method: :get, class: "") do |f| %>
+      <%= f.collection_select :rent, Sample.select(:rent).distinct.where.not(rent: ""), :rent, :rent %>
 
-      <p><br><br><%= link_to "サンプル登録", new_sample_path, class: 'btn01' %><br><br></p>
+      <%= f.submit "検索", class: "search-btn" %>
+      <% end %>
 
+    </div>
+
+    <% end %>
+
+
+    <p class="menu">Inventory専用メニュー</p>
+    <% if current_user.group == "Inventory" %>
+      <p><br><%= link_to "サンプル登録", new_sample_path, class: 'btn01' %><br><br></p>
+    <% else %>
+      <p>現在ログイン中のユーザーは利用できません。</p>
     <% end %>
 
   </div>
