@@ -200,9 +200,19 @@ class SamplesController < ApplicationController
 
   #貸出リスト
   def rent_list
+    if current_user.group == "Inventory" ||
+       current_user.group == "A-STUDIO" ||
+       current_user.group == "C-STUDIO"
+
+       @samples = Sample.where(rent: params[:rent])
+       flash[:already] = "　#{params[:rent]}【貸出中一覧】"
+    
+    else
     #自分の貸出確認専用
     @samples = Sample.where(rent: current_user[:name]) 
     flash[:already] = "　#{current_user[:name]}【貸出中一覧】"
+    end
+
   end
 
 
