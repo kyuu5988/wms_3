@@ -9,6 +9,12 @@ class Sample < ApplicationRecord
     end
   end
 
+  #ロケーション内検索用
+  def self.search2(search)
+    Sample.where('ロケーション LIKE(?)',"%#{search}%")
+  end
+
+  
 
   with_options length:{ minimum: 10, message:'10桁ありません' }, format: { with: /\A\d{10}/,message: '半角数字のみ登録可' } do
     validates :基本コード

@@ -5,24 +5,34 @@
   <div class="">
     <p class="fin">　<%= notice %></p>
     <p class="menu">共通メニュー</p>
-    <% if current_user.group == "Cast" ||
-          current_user.group == "Still Image" ||
-          current_user.group == "Promotion" ||
-          current_user.group == "Stylist" %>
+  <% if current_user.group == "Cast" ||
+        current_user.group == "Still Image" ||
+        current_user.group == "Promotion" ||
+        current_user.group == "Stylist" %>
     <p> <%= link_to "自分の貸出確認", rent_list_path, class: 'btn01' %> </p><br><br>
-    <% else %>
+  <% else %>
 
     <div class="field-input">
-      <p>貸出リストを確認する</p>
+      <p class="p04" >貸出リストを確認する</p>
       <%= form_with(url: rent_list_path, local: true, method: :get, class: "") do |f| %>
       <%= f.collection_select :rent, Sample.select(:rent).distinct.where.not(rent: ""), :rent, :rent %>
 
-      <%= f.submit "検索", class: "search-btn" %>
+      <%= f.submit "検索", class: "search-btn" %><br><br>
       <% end %>
 
-    </div>
+        <%# ロケーション内検索 %>
+        <p class="p04" >ロケーション別・全サンプルリスト</p>
 
-    <% end %>
+        <div class="search2">
+          <%= form_with(url: search_samples_path, local: true, method: :get, class: "") do |f| %>
+          <%= f.collection_select :ロケーション, Sample.select(:ロケーション).distinct, :ロケーション, :ロケーション %>
+          <%= f.submit "検索", class: "search-btn" %>
+          <% end %>
+
+    </div>
+  <% end %>
+  </div>
+
 
 
     <p class="menu">Inventory専用メニュー</p>
@@ -33,9 +43,6 @@
     <% end %>
 
   </div>
-
-
-
 
 
 

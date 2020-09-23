@@ -49,8 +49,16 @@ class SamplesController < ApplicationController
   end
 
   def search
-    @samples = Sample.search(params[:keyword])
-    @keyword = (params[:keyword])
+    #ロケーション内検索用
+    if params[:ロケーション]
+      @samples = Sample.search2(params[:ロケーション])
+      @keyword = (params[:ロケーション])
+      flash[:already] = "ロケーション内の全サンプル検索です"
+    #申込番号、商品名
+    else
+      @samples = Sample.search(params[:keyword])
+      @keyword = (params[:keyword])
+    end
   end
 
 

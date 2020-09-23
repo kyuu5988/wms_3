@@ -37,6 +37,18 @@ a {
   align-items: center;
 }
 
+.search2 {
+  width: 200px;
+  height: 35px;
+  background-color: lightgoldenrodyellow;
+  margin: 10px 5px 5px 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px dotted darkblue;
+}
+
+
 .search-input {
   width: 100px;
   border: 2px dotted lightseagreen;
