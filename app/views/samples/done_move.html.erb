@@ -11,8 +11,9 @@
     </p>
 
     <p class="sea-res2">
-    <%= prod.販売商品名 %>　　　
-    <%= prod.カラー %>
+    <%# <%= prod.販売商品名 %>
+    <%= link_to "#{prod.販売商品名}", sample_path(prod.id),method: :get, class:'sample-btn' %>
+    　　　<%= prod.カラー %>
     </p>
 
     <% if prod.rent != "(該当無し)" &&

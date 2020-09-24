@@ -24,13 +24,15 @@
 
         <div class="sea-res2">
           <div class="">
-            <%= sample.販売商品名 %>　　　
-            <%= sample.カラー %>
+            <%= link_to "#{sample.販売商品名}", sample_path(sample.id),method: :get, class:'sample-btn' %>
+
+            　　　<%= sample.カラー %>
           </div>
+
+
+          <%# サンプル編集はインベントリー専用 %>
           <div class="">
-
             <% if current_user.group == "Inventory" %>
-
               <%= link_to '情報変更', edit_sample_path(sample.id),method: :get,class: 'btn01' %>
             <% end %>
           </div>     
@@ -43,8 +45,5 @@
 
       <% end %>
         <p><%= count %>件見つかりました。</p>
-          
-
-    
-
+        
 </div>

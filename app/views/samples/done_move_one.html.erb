@@ -17,7 +17,9 @@
     </p>
 
     <p class="sea-res2">
-    <%= @sample.販売商品名 %>　　　
+    <%# <%= @sample.販売商品名 %>
+    <%= link_to "#{@sample.販売商品名}", sample_path(@sample.id),method: :get, class:'sample-btn' %>
+
     <%= @sample.カラー %>
     </p>
 
