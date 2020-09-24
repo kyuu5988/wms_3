@@ -1,4 +1,5 @@
 class SamplesController < ApplicationController
+  before_action :set_sample, only: [:edit, :show]
 
   def new
     @sample = Sample.new
@@ -18,7 +19,8 @@ class SamplesController < ApplicationController
   end
 
   def edit
-    @sample = Sample.find(params[:id]) 
+  end
+  def show
   end
   
   #url貸出返却用
@@ -44,6 +46,7 @@ class SamplesController < ApplicationController
     if sample.update(sample_params)
       redirect_to edit_sample_path(sample.id), notice: '正常に変更されました。'
     else
+
       redirect_to edit_sample_path(sample.id), notice: '入力内容が正しくありません。'
     end
   end
@@ -230,6 +233,8 @@ class SamplesController < ApplicationController
     params.require(:sample).permit(:基本コード, :サブコード, :個別番号, :申込番号, :販売商品名, :カテゴリー, :カラー, :ロケーション, :rent)
   end
 
-
+  def set_sample
+    @sample = Sample.find(params[:id]) 
+  end
 
 end
