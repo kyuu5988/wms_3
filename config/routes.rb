@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     #単品編集用
     patch 'update2' => 'samples#update2'
 
+    #ロケ取引履歴を残す用(resumeテーブル)
+    resources :resume
   end
   
   get 'rent_list' => 'samples#rent_list'

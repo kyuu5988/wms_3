@@ -1,4 +1,5 @@
 class Sample < ApplicationRecord
+  has_many :resumes  # resumesテーブルとのアソシエーション
 
   def self.search(search)
     if search.to_s =~ /^[0-9]+$/
