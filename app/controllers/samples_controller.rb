@@ -9,6 +9,10 @@ class SamplesController < ApplicationController
     @sample = Sample.new(sample_params)
     if @sample.save
       @sample.update(rent: "")
+      #履歴保存調整中↓今のところ効果なし
+      @resume = @sample.resumes.build
+      @resume.save(ロケーション新: @sample[:ロケーション])
+
       #redirect_to root_path
       redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
     else
@@ -231,6 +235,11 @@ class SamplesController < ApplicationController
 
   def sample_params
     params.require(:sample).permit(:基本コード, :サブコード, :個別番号, :申込番号, :販売商品名, :カテゴリー, :カラー, :ロケーション, :rent)
+  end
+
+  #履歴保存調整中↓今のところ未使用
+  def resume_params
+    params.require(:resume).permit(user_id: current_user[:id], sample_id: @resume[:id], ロケーション新: @resume[:ロケーション], name: current_user[:name], group: current_user[:group])
   end
 
   def set_sample
