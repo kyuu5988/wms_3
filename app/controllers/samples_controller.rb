@@ -9,12 +9,12 @@ class SamplesController < ApplicationController
     @sample = Sample.new(sample_params)
     if @sample.save
       @sample.update(rent: "")
-      #履歴保存調整中↓今のところ効果なし
-      #↓今テスト中
-      # redirect_to new_sample_resume_path(@sample.id, request.parameters)
-      # (@sample.id, ロケーション新: @sample.ロケーション)
-      #↓正常な設定
-      redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
+      #↓操作履歴保存用アクションへ
+      redirect_to rireki_path(request.parameters)
+      #↑パスでパラメーターを送る(@sample.id, request.parameters)
+      
+      #↓以前の設定（履歴保存なし）
+      # redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
     else
       flash[:already] = "入力内容に不備があります。"
       render :new #バリデーションのエラー表示はこっち
