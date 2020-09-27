@@ -238,11 +238,6 @@ class SamplesController < ApplicationController
     params.require(:sample).permit(:基本コード, :サブコード, :個別番号, :申込番号, :販売商品名, :カテゴリー, :カラー, :ロケーション, :rent )
   end
 
-  #履歴保存調整中↓今のところ未使用
-  def resume_params
-    params.require(:sample).permit(user_id: current_user[:id], sample_id: [:sample_id], ロケーション新: [:ロケーション], name: current_user[:name], group: current_user[:group])
-  end
-
   def set_sample
     @sample = Sample.find(params[:id]) 
   end

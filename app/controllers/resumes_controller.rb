@@ -7,18 +7,26 @@ class ResumesController < ApplicationController
     #loc = params[:sample][:ロケーション]
     #render plain: loc #←テキストのみで画面に表示
 
-    resume = Resume.new(ロケーション新: params[:sample][:ロケーション])
+    resume = Resume.new(
+    user_id: current_user[:id],
+    #sample_id 入れること
+    ロケーション新: params[:sample][:ロケーション],
+    name: current_user[:name],
+    group: current_user[:group] )
+
     resume.save
     redirect_to new_sample_path, notice: '登録完了・続けて登録可能'
   end
 
   private
 
-  def resume_params
-    params.require(:sample).permit(ロケーション新: params[:sample][:ロケーション])
+  #ここは使っていない。（以下のコードは全て効果無い状態）
+
+  # def resume_params
+  #   params.require(:sample).permit(ロケーション新: params[:sample][:ロケーション])
     #params.require(:sample).permit(:基本コード, :サブコード, :個別番号, :申込番号, :販売商品名, :カテゴリー, :カラー, :ロケーション, :rent )
 
-  end
+  # end
 
 
 end

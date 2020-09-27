@@ -4,6 +4,5 @@ class Resume < ApplicationRecord
   # belongs_to :sample  # samplesテーブルとのアソシエーション
   # belongs_to :user  # usersテーブルとのアソシエーション
 
-  #テスト中
-  validates :ロケーション新, presence: true
+  #バリデーションの設定は不要。必要な値を取得して必要なカラムに保存する設定（コントローラーで）  
 end
