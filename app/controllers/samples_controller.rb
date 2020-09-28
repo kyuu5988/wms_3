@@ -10,7 +10,7 @@ class SamplesController < ApplicationController
     if @sample.save
       @sample.update(rent: "")
       #↓操作履歴保存用アクションへ
-      redirect_to rireki_path(request.parameters)
+      redirect_to rireki_path(@sample.id, request.parameters)
       #↑パスでパラメーターを送る(@sample.id, request.parameters)
       
       #↓以前の設定（履歴保存なし）

@@ -9,7 +9,7 @@ class ResumesController < ApplicationController
 
     resume = Resume.new(
     user_id: current_user[:id],
-    #sample_id 入れること
+    sample_id: params[:format],#なぜ format が id なのか不明だが取得できた
     ロケーション新: params[:sample][:ロケーション],
     name: current_user[:name],
     group: current_user[:group] )
