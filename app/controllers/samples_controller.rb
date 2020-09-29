@@ -22,7 +22,6 @@ class SamplesController < ApplicationController
     end
   end
 
-
   def edit
   end
   def show
@@ -183,16 +182,26 @@ class SamplesController < ApplicationController
 
 
     #貸出処理用
-    else #@sample[:ロケーション] 
+    else 
+      old_loc = @sample.ロケーション#旧ロケ取得
       @sample.update(ロケーション: current_user[:group] )
       @sample.update(rent: current_user[:name] )
-      #render plain: @sample[:ロケーション]
+      #render plain: @sample[:ロケーション] #パラメーターをテキストで画面表示用
+      #履歴用
+      resume = Resume.new(
+      user_id: current_user[:id],
+      sample_id: @sample.id,
+      ロケーション旧: old_loc,#ロケ更新前に取得
+      ロケーション新: @sample.ロケーション,
+      name: current_user[:name],
+      group: current_user[:group] )
+    
+      resume.save
+    
+
       flash[:already] = "貸出処理が完了しました。"
       render :done_move_one
 
-    #elsif @sample[:ロケーション] == "stylist"
-      #render :done_move_one
-      #redirect_to root_path
     end
 
   end
