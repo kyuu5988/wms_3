@@ -166,8 +166,7 @@ class SamplesController < ApplicationController
     if @sample[:ロケーション] == "Stylist" ||
        @sample[:ロケーション] == "Cast" ||
        @sample[:ロケーション] == "Still Image" ||
-       @sample[:ロケーション] == "Promotion" #||
-       #@sample[:ロケーション] == "Inventory"
+       @sample[:ロケーション] == "Promotion"
 
       flash[:already] = "#{@sample.rent}がすでに貸出処理されています。"
       render :done_move_one
@@ -175,33 +174,26 @@ class SamplesController < ApplicationController
     #集荷モード用
     elsif current_user.mode == "SYUKA-A" ||
           current_user.mode == "SYUKA-C"
-
+          
+      @old_loc = @sample.ロケーション#旧ロケ取得
       @sample.update(ロケーション: current_user[:mode] )
+      
+      set_resume#履歴用
+
       flash[:already] = "#{current_user[:mode]}へpickしました"
       render :done_move_one
 
-
     #貸出処理用
     else 
-      old_loc = @sample.ロケーション#旧ロケ取得
+      @old_loc = @sample.ロケーション#旧ロケ取得
       @sample.update(ロケーション: current_user[:group] )
       @sample.update(rent: current_user[:name] )
       #render plain: @sample[:ロケーション] #パラメーターをテキストで画面表示用
-      #履歴用
-      resume = Resume.new(
-      user_id: current_user[:id],
-      sample_id: @sample.id,
-      ロケーション旧: old_loc,#ロケ更新前に取得
-      ロケーション新: @sample.ロケーション,
-      name: current_user[:name],
-      group: current_user[:group] )
-    
-      resume.save
-    
+
+      set_resume#履歴用
 
       flash[:already] = "貸出処理が完了しました。"
       render :done_move_one
-
     end
 
   end
@@ -249,6 +241,17 @@ class SamplesController < ApplicationController
 
   def set_sample
     @sample = Sample.find(params[:id]) 
+  end
+
+  def set_resume
+    resume = Resume.new(
+      user_id: current_user[:id],
+      sample_id: @sample.id,
+      ロケーション旧: @old_loc,#ロケ更新前に取得
+      ロケーション新: @sample.ロケーション,
+      name: current_user[:name],
+      group: current_user[:group] )    
+      resume.save
   end
 
 end
