@@ -29,12 +29,13 @@ class SamplesController < ApplicationController
   
   #url貸出返却用
   def update
-    @sample = Sample.find(params[:id])   
+    @sample = Sample.find(params[:id])
+    @old_loc = @sample.ロケーション#旧ロケ取得
     if @sample.update(ロケーション: params[:sample][:ロケーション])
       #↑paramsの中から希望のデータを出している
       @sample.update(rent: "" )
-      #↓以前の結果メッセージ
-      #redirect_to root_path, notice: '返却が完了しました。' 
+      set_resume#履歴用
+
       flash[:already] = "返却が正常に完了しました。"
       render :done_move_one
     else
@@ -44,7 +45,7 @@ class SamplesController < ApplicationController
     end
   end
   
-  #通常サンプル単品編集用
+  #通常サンプル単品編集用※履歴保存未設定
   def update2
     sample = Sample.find(params[:sample_id]) 
     if sample.update(sample_params)
@@ -100,10 +101,36 @@ class SamplesController < ApplicationController
           if current_user.mode == "SYUKA-A" ||
              current_user.mode == "SYUKA-C"
 
-            pro.update(ロケーション: current_user[:mode])  
+            old_loc = pro.ロケーション#旧ロケ取得
+
+            pro.update(ロケーション: current_user[:mode])
+
+            resume = Resume.new(
+              user_id: current_user[:id],
+              sample_id: pro.id,
+              ロケーション旧: old_loc,#ロケ更新前に取得
+              ロケーション新: pro.ロケーション,
+              name: current_user[:name],
+              group: current_user[:group] )    
+              resume.save
+
+
             flash[:already] = "#{current_user[:mode]}へpickしました"
           else
+            old_loc = pro.ロケーション#旧ロケ取得
+
             pro.update(ロケーション: current_user[:group] )
+
+            resume = Resume.new(
+              user_id: current_user[:id],
+              sample_id: pro.id,
+              ロケーション旧: old_loc,#ロケ更新前に取得
+              ロケーション新: pro.ロケーション,
+              name: current_user[:name],
+              group: current_user[:group] )    
+              resume.save
+
+
             flash[:already] = "ロケーションの移動が完了しました。"
           end
 
