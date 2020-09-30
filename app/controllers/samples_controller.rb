@@ -24,7 +24,10 @@ class SamplesController < ApplicationController
 
   def edit
   end
+  #サンプル個別詳細＋履歴
   def show
+    #履歴表示用（新しい順に）
+    @resumes = Resume.where(sample_id: @sample.id).order("created_at DESC")
   end
   
   #url貸出返却用

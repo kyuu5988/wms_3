@@ -1,1 +1,26 @@
-<p>詳細</p>
+<div class="search-list">
+  <p class="menu" >サンプル個別詳細情報：<%= @sample.基本コード %></p>
+
+  <p class="p02">
+  　<%= @sample.申込番号 %>
+  -<%= @sample.サブコード %>
+  #<%= @sample.個別番号 %>
+  　<%= @sample.販売商品名 %>
+  　ctg<%= @sample.カテゴリー %>
+  </p>
+  <p class="menu" >ロケーション移動履歴</p>
+  <% @resumes.each do |resume| %>
+    
+    <p class="sea-res">
+    <%= resume.ロケーション旧 %> 　=>　
+    <%= resume.ロケーション新 %>　
+    <%= resume.name %>
+    </p>
+
+    <p class="sea-res2">
+    <%# エル( l )メソッドで日本時刻 %>
+    <%= l resume.created_at %>
+    </p>
+
+  <% end %>
+</div>

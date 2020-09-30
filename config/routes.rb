@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # ↓以前の設定 only: [:new, :create]
   resources :samples do
-    #ロケ取引履歴を残す用(resumeテーブル)
+    #ロケ取引履歴を残す用(未使用)
     #resources :resumes#, only: :create
 
     collection do
@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     end
   end
 
-  #test02
-  # resources :resumes, only: :create
 
   #独自アクション用
 
@@ -39,7 +37,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
 
-  #履歴用独自アクションテスト
+  #履歴用独自アクション
   get 'rireki' => 'resumes#rireki'
 
 
