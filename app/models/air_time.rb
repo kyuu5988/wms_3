@@ -1,0 +1,2 @@
+class AirTime < ApplicationRecord
+end
