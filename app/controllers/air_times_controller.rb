@@ -1,0 +1,2 @@
+class AirTimesController < ApplicationController
+end
