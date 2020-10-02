@@ -1,26 +1,48 @@
 <div class="search-list">
-  <p class="menu" >サンプル個別詳細情報：<%= @sample.基本コード %></p>
+  <%# 基本情報 %>
+  <div class="">
+    <p class="menu" >サンプル個別詳細情報：<%= @sample.基本コード %></p>
 
-  <p class="p02">
-  　<%= @sample.申込番号 %>
-  -<%= @sample.サブコード %>
-  #<%= @sample.個別番号 %>
-  　<%= @sample.販売商品名 %>
-  　ctg<%= @sample.カテゴリー %>
-  </p>
-  <p class="menu" >ロケーション移動履歴</p>
-  <% @resumes.each do |resume| %>
-    
-    <p class="sea-res">
-    <%= resume.ロケーション旧 %> 　=>　
-    <%= resume.ロケーション新 %>　
-    <%= resume.name %>
+    <p class="p02">
+    　<%= @sample.申込番号 %>
+    -<%= @sample.サブコード %>
+    #<%= @sample.個別番号 %>
+    　<%= @sample.販売商品名 %>
+    　ctg<%= @sample.カテゴリー %>
     </p>
-
-    <p class="sea-res2">
-    <%# エル( l )メソッドで日本時刻 %>
-    <%= l resume.created_at %>
+    <p class="p02">
+    　ロケ：<%= @sample.ロケーション %>
+    　色等：<%= @sample.カラー %>
     </p>
+  </div>
 
-  <% end %>
+  <%# menu1 商品画像 %>
+  <div class="">
+  </div>
+
+  <%# menu2 OA情報 %>
+  <div class="">
+  </div>
+
+
+
+
+  <%# menu3 移動履歴 %>
+  <div class="">
+    <p class="menu" >ロケーション移動履歴</p>
+    <% @resumes.each do |resume| %>
+      
+      <p class="sea-res">
+      <%= resume.ロケーション旧 %> 　=>　
+      <%= resume.ロケーション新 %>　
+      <%= resume.name %>
+      </p>
+
+      <p class="sea-res2">
+      <%# エル( l )メソッドで日本時刻 %>
+      <%= l resume.created_at %>
+      </p>
+
+    <% end %>
+  </div>
 </div>

@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   # ↓以前の設定 only: [:new, :create]
   resources :samples do
-    #ロケ取引履歴を残す用(未使用)
+    #ロケ取引履歴を残す用(現在独自ルート利用中)
     #resources :resumes#, only: :create
-
+    resources :air_times#, only: :create
     collection do
       get 'search'
     end
