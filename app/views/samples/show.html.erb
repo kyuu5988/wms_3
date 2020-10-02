@@ -22,6 +22,25 @@
 
   <%# menu2 OA情報 %>
   <div class="">
+    <%# menu2-1 OA情報表示 %>
+    <div class="">
+      <p class="menu" >OA予定</p>
+
+    </div>
+
+    <%# menu2-2 OA情報登録 %>
+    <div class="">
+      <% if current_user.group == "Inventory" %>
+        <p class="menu" >OA予定登録</p>
+        <%= form_with(model: [@sample,@air_time], local: true) do |f| %>
+        <%= f.datetime_field :start_t %>
+        <%= f.submit "OA登録" %>
+
+        <p class="fin"><%= flash[:onair] %>
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
 
 

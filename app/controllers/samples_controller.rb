@@ -28,6 +28,10 @@ class SamplesController < ApplicationController
   def show
     #履歴表示用（新しい順に）
     @resumes = Resume.where(sample_id: @sample.id).order("created_at DESC")
+    #air_time登録用
+    @air_time = AirTime.new
+    #air_time表示用（picT参考）
+    @air_times = @sample.air_times
   end
   
   #url貸出返却用
