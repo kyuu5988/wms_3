@@ -12,7 +12,7 @@
     </p>
     <p class="p02">
     　ロケ：<%= @sample.ロケーション %>
-    　色等：<%= @sample.カラー %>
+    　【<%= @sample.カラー %>】
     </p>
   </div>
 
@@ -33,10 +33,11 @@
       <% if current_user.group == "Inventory" %>
         <p class="menu" >OA予定登録</p>
         <%= form_with(model: [@sample,@air_time], local: true) do |f| %>
-        OA日<%= f.date_field :date %><br>
-        開始<%= f.time_select :start_t, include_seconds: true %><br>
-        終了<%= f.time_select :end_t, include_seconds: true %><br>
-        <%= f.submit "OA登録" %>
+        
+        　OA日<%= f.date_field :date, :value => Time.now.strftime('%Y-%m-%d') %><br>
+        　開始<%= f.time_select :start_t, include_seconds: true %><br>
+        　終了<%= f.time_select :end_t, include_seconds: true %><br>
+        　<%= f.submit "OA登録" %>
 
         <p class="fin"><%= flash[:onair] %>
         <% end %>
