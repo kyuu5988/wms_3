@@ -11,7 +11,7 @@
         current_user.group == "Stylist" %>
     <p> <%= link_to "自分の貸出確認", rent_list_path, class: 'btn01' %> </p><br><br>
   <% else %>
-
+    <%# 通常メニュー %>
     <div class="field-input">
       <p class="p04" >貸出リストを確認する</p>
       <%= form_with(url: rent_list_path, local: true, method: :get, class: "") do |f| %>

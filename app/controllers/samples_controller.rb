@@ -68,11 +68,12 @@ class SamplesController < ApplicationController
     if params[:ロケーション]
       @samples = Sample.search2(params[:ロケーション])
       @keyword = (params[:ロケーション])
-      flash[:already] = "ロケーション内の全サンプル検索です"
+      flash[:all_sample_in_loc] = "ロケーション内の全サンプル検索です"#1
     #申込番号、商品名
     else
       @samples = Sample.search(params[:keyword])
       @keyword = (params[:keyword])
+      flash[:all_sample_in_loc] = "" #viewに#1のメッセージが出るにを防止
     end
   end
 

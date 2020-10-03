@@ -8,7 +8,7 @@ class AirTimesController < ApplicationController
 
   private
   def air_time_params
-    params.require(:air_time).permit(:start_t).merge(sample_id: params[:sample_id])
+    params.require(:air_time).permit(:date, :start_t, :end_t, :onair_t).merge(sample_id: params[:sample_id])
     
   end
 end

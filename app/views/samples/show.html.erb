@@ -33,7 +33,9 @@
       <% if current_user.group == "Inventory" %>
         <p class="menu" >OA予定登録</p>
         <%= form_with(model: [@sample,@air_time], local: true) do |f| %>
-        <%= f.datetime_field :start_t %>
+        OA日<%= f.date_field :date %><br>
+        開始<%= f.time_select :start_t, include_seconds: true %><br>
+        終了<%= f.time_select :end_t, include_seconds: true %><br>
         <%= f.submit "OA登録" %>
 
         <p class="fin"><%= flash[:onair] %>
