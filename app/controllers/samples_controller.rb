@@ -62,7 +62,8 @@ class SamplesController < ApplicationController
       redirect_to edit_sample_path(sample.id), notice: '入力内容が正しくありません。'
     end
   end
-
+  
+  #サンプル検索
   def search
     #ロケーション内検索用
     if params[:ロケーション]

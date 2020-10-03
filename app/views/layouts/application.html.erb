@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
 
 
-
     <!-- ここまで追加 -->
 
     
@@ -39,8 +38,15 @@
   <% end %>
 
 </div>
-  <p class="">販売商品名でも検索出来ます。</p>
 
+<div class="">
+  <% if user_signed_in? %>
+    <p class="">販売商品名でも検索出来ます。</p>
+  <% else %>
+    <p class="fin">ログインしていません。</p>
+  <% end %>
+
+</div>
 </header>
 
     <%= yield %>
