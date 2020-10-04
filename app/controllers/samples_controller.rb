@@ -106,9 +106,10 @@ class SamplesController < ApplicationController
            flash[:already] = "貸出中です。"
 
         else
-          # inv pick用
+          # inv pick,4F入庫用
           if current_user.mode == "SYUKA-A" ||
-             current_user.mode == "SYUKA-C"
+             current_user.mode == "SYUKA-C" ||
+             current_user.mode == "INV-4F"
 
             old_loc = pro.ロケーション#旧ロケ取得
 
@@ -124,7 +125,7 @@ class SamplesController < ApplicationController
               resume.save
 
 
-            flash[:already] = "#{current_user[:mode]}へpickしました"
+            flash[:already] = "#{current_user[:mode]}へ移動しました"
           else
             old_loc = pro.ロケーション#旧ロケ取得
 
@@ -209,14 +210,15 @@ class SamplesController < ApplicationController
 
     #集荷モード用
     elsif current_user.mode == "SYUKA-A" ||
-          current_user.mode == "SYUKA-C"
+          current_user.mode == "SYUKA-C" ||
+          current_user.mode == "INV-4F"
           
       @old_loc = @sample.ロケーション#旧ロケ取得
       @sample.update(ロケーション: current_user[:mode] )
       
       set_resume#履歴用
 
-      flash[:already] = "#{current_user[:mode]}へpickしました"
+      flash[:already] = "#{current_user[:mode]}へ移動しました"
       render :done_move_one
 
     #貸出処理用
