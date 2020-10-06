@@ -31,7 +31,7 @@ class SamplesController < ApplicationController
     #air_time登録用
     @air_time = AirTime.new
     #air_time表示用（picT参考）
-    @air_times = @sample.air_times.order("date DESC")
+    @air_times = @sample.air_times.order("date DESC").order("start_t")
   end
   
   #url貸出返却用

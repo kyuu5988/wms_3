@@ -2,3 +2,5 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+      onlytime: "%X"
+      # ↑view内に応じてフォーマットの設定を変更
