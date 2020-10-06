@@ -26,7 +26,8 @@
     <div class="">
       <p class="menu" >OA予定</p>
       <% @air_times.each do |air_time| %>
-        <p class="sea-res" ><%= air_time.date %></p>
+        <% wd = ["日","月","火","水","木","金","土"] %>
+        <p class="sea-res" ><%= air_time.date %>　[<%= wd[air_time.date.wday] %>]</p>
         <p class="sea-res2" >
           [S]<%= l air_time.start_t, format: :onlytime %>　
           <%# ↑↓locales>ja.yml内でformat設定 %>
