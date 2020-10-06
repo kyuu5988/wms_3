@@ -1,5 +1,5 @@
 class AirTimesController < ApplicationController
-  #テスト中
+  
   def create
     air_time = AirTime.create(air_time_params)
     flash[:onair] = "OA予定を追加しました。"

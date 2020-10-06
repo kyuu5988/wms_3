@@ -25,6 +25,14 @@
     <%# menu2-1 OA情報表示 %>
     <div class="">
       <p class="menu" >OA予定</p>
+      <% @air_times.each do |air_time| %>
+        <p class="sea-res" ><%= air_time.date %></p>
+        <p class="sea-res2" >
+          [S]<%= l air_time.start_t %>
+          [E]<%= air_time.end_t %>
+        </p>
+
+      <% end %>
 
     </div>
 
