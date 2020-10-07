@@ -22,9 +22,14 @@ class AirTimesController < ApplicationController
     tt6 = et6 - st6
 
     total = "#{tt4}:#{tt5}:#{tt6}"
-    #ここまで計算して変数へ代入
+    #ここまでOA時間計算用
 
-    params.require(:air_time).permit(:date, :start_t, :end_t).merge(sample_id: params[:sample_id], onair_t: total)
+    #ソート用カラム保存設定
+    st_ss = params[:air_time]["start_t(6i)"].to_s#00秒対策
+    start_time = "#{st4}#{st5}#{st_ss}"
+    #ここまで
+
+    params.require(:air_time).permit(:date, :start_t, :end_t).merge(sample_id: params[:sample_id], onair_t: total, sort_t: start_time)
     
   end
 

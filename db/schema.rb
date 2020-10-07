@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_131208) do
+ActiveRecord::Schema.define(version: 2020_10_07_001808) do
 
   create_table "air_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "sample_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_131208) do
     t.time "onair_t"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sort_t"
   end
 
   create_table "resumes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
