@@ -27,7 +27,12 @@
       <p class="menu" >OA予定</p>
       <% @air_times.each do |air_time| %>
         <% wd = ["日","月","火","水","木","金","土"] %>
-        <p class="sea-res" ><%= air_time.date %>　[<%= wd[air_time.date.wday] %>]</p>
+        
+        <p class="sea-res" >
+          <%= air_time.date %>　
+          [<%= wd[air_time.date.wday] %>]
+        </p>
+
         <p class="sea-res2" >
           [S]<%= l air_time.start_t, format: :onlytime %>　
           <%# ↑↓locales>ja.yml内でformat設定 %>
@@ -35,7 +40,7 @@
           <%# コントローラー内で合計air_time計算 %>
           <% if air_time.onair_t %><!--null用一時対策-->
           [AT]<%= l air_time.onair_t, format: :onlytime %>
-          <% end %>
+          <% end %><!--DBよりnullデータ無くなり次第削除OK-->
         </p>
 
       <% end %>

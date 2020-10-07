@@ -24,7 +24,7 @@ class SamplesController < ApplicationController
 
   def edit
   end
-  #サンプル個別詳細＋履歴
+  #サンプル個別詳細＋履歴＋OA登録・表示
   def show
     #履歴表示用（新しい順に）
     @resumes = Resume.where(sample_id: @sample.id).order("created_at DESC")
