@@ -30,8 +30,15 @@ class SamplesController < ApplicationController
     @resumes = Resume.where(sample_id: @sample.id).order("created_at DESC")
     #air_time登録用
     @air_time = AirTime.new
-    #air_time表示用（picT参考）
-    @air_times = @sample.air_times.order("date DESC").order("sort_t")
+
+    #air_time表示用（picT参考）アソシエーション利用時専用
+    # @air_times = @sample.air_times.order("date DESC").order("sort_t")
+
+    #現在はair_time登録時sample_id固定の為以下の記述利用
+    no = @sample[:申込番号] #[]を使ってカラムを指定 
+    sam_top = Sample.find_by(申込番号: no) #同品番の最初のみ取得
+
+    @air_times = AirTime.where(sample_id: sam_top[:id]).order("date DESC").order("sort_t")
   end
   
   #url貸出返却用
