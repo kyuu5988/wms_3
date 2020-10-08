@@ -60,10 +60,10 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  #パスワードリセット関連設定 テスト記述
+  #パスワードリセット関連設定
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   #↑を設定したらサーバー再起動
-  #以下、テスト中
+  #gmailを使ったメール送信機能
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -74,6 +74,7 @@ Rails.application.configure do
     :user_name => "kyuu5988@gmail.com",
     :password => "xmgwuoxdvsliufua",
     :authentication => 'login'
-}
+  }
+  #↑こちらも、各種設定変更したらサーバー再起動
 
 end
