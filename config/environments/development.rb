@@ -72,7 +72,7 @@ Rails.application.configure do
     :port => 587,
     :domain => 'smtp.gmail.com',
     :user_name => "kyuu5988@gmail.com",
-    :password => "xmgwuoxdvsliufua",
+    :password => "",
     :authentication => 'login'
   }
   #↑こちらも、各種設定変更したらサーバー再起動
