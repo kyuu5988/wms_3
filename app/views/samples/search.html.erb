@@ -3,10 +3,8 @@
       <%= render "main" %>
     </div>
     <h2>検索結果（無入力時 全データ表示）</h2>
-    <%# <%= notice %>
     <p class="fin"><%= flash[:all_sample_in_loc] %> </p>
     <p class="p02">　"<%= @keyword %>"で検索しています。</p>
-
 
     <div class="search-list">
       <% count = 0 %>
@@ -14,18 +12,15 @@
         <% count += 1 %>
         
         <p class="sea-res">
-
           <%= sample.基本コード %>-
           <%= sample.サブコード %> #
           <%= sample.個別番号 %>　　　ロケ：
           <%= sample.ロケーション %>
-
         </p>
 
         <div class="sea-res2">
           <div class="">
             <%= link_to "#{sample.販売商品名}", sample_path(sample.id),method: :get, class:'sample-btn' %>
-
             　　　<%= sample.カラー %>
           </div>
 

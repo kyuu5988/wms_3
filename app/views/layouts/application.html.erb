@@ -5,17 +5,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    
-        <!-- ここから追加 -->
+    <!-- ここから追加 -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
 
-
     <!-- ここまで追加 -->
-
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -28,15 +25,13 @@
 
 <header>
   <p class="p01">wms_3 mobile <%= link_to 'TOP', '/',class:'fot-btn' %>
-</p>
+  </p>
 
 <div class="search">
-
   <%= form_with(url: search_samples_path, local: true, method: :get, class: "") do |f| %>
   <%= f.text_field :keyword, placeholder: "申込番号6桁", class:"search-input", autocomplete: "off", maxlength:10 %>
   <%= f.submit "検索", class: "search-btn" %>
   <% end %>
-
 </div>
 
 <div class="">
@@ -45,8 +40,8 @@
   <% else %>
     <p class="fin">ログインしていません。</p>
   <% end %>
-
 </div>
+
 </header>
 
     <%= yield %>
@@ -62,16 +57,6 @@
     <div class="fot-btn">
       <%= link_to edit_user_path(current_user) do %>
       ログイン中 : <%= current_user.name %> / <%= current_user.group %>
-        <!-- 管理者権限ユーザー一覧 -->
-        <% if current_user.id == 1 ||
-              current_user.id == 3 ||
-              current_user.id == 4 ||
-              current_user.id == 12 %>
-          <p>権限：管理者</p>
-        <% else %>
-          <p>権限：一般（閲覧・ロケ移動）</p>
-        <% end %>
-
       <% end %>
     </div>
 
@@ -81,13 +66,9 @@
     <% end %>
 
     <p class="p01">©️ minami Co.Ltd wms_3 mobile ver_3β</p>
-
-
   </div>
 
 </footer>
-
-
 
 
   </body>

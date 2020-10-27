@@ -41,7 +41,6 @@ class SamplesController < ApplicationController
     @sample = Sample.find(params[:id])
     @old_loc = @sample.ロケーション#旧ロケ取得
     if @sample.update(ロケーション: params[:sample][:ロケーション])
-      #↑paramsの中から希望のデータを出している
       @sample.update(rent: "" )
       set_resume#履歴用
 
@@ -50,7 +49,6 @@ class SamplesController < ApplicationController
     else
       flash[:already] = "ロケーション情報を入力して下さい"
       render :done_move_one
-      #redirect_to root_path, notice: '正しく完了しませんでした。戻って正しいロケーションを入力して下さい'
     end
   end
   
@@ -60,7 +58,6 @@ class SamplesController < ApplicationController
     if sample.update(sample_params)
       redirect_to edit_sample_path(sample.id), notice: '正常に変更されました。'
     else
-
       redirect_to edit_sample_path(sample.id), notice: '入力内容が正しくありません。'
     end
   end
@@ -72,7 +69,7 @@ class SamplesController < ApplicationController
       @samples = Sample.search2(params[:ロケーション])
       @keyword = (params[:ロケーション])
       flash[:all_sample_in_loc] = "ロケーション内の全サンプル検索です"#1
-    #申込番号、商品名
+    #申込番号、商品名検索用
     else
       @samples = Sample.search(params[:keyword])
       @keyword = (params[:keyword])
@@ -198,14 +195,11 @@ class SamplesController < ApplicationController
   end
 
 
-  #複数移動結果表示
+  #同品番複数移動結果表示
   def done_move
     @sample = Sample.find(params[:sample_id]) 
-    #(idはすでに渡されている)
-    no = @sample[:申込番号] #[]を使ってカラムを指定 
-
-    @products = Sample.where(申込番号: no) #指定条件で複数取得
-
+    no = @sample[:申込番号] 
+    @products = Sample.where(申込番号: no) #同品番を全て取得
   end
 
   #単品移動結果表示

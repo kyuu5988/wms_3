@@ -17,9 +17,7 @@
     </p>
 
     <p class="sea-res2">
-    <%# <%= @sample.販売商品名 %>
     <%= link_to "#{@sample.販売商品名}", sample_path(@sample.id),method: :get, class:'sample-btn' %>
-
     <%= @sample.カラー %>
     </p>
 
@@ -27,8 +25,7 @@
 
   <%# 貸出本人/pick時だけが返却できるようにする %>
   <% if current_user.name == @sample.rent ||
-        current_user.mode == "SYUKA-A" ||
-        current_user.mode == "SYUKA-C" %>
+        current_user.group == "Inventory" %>
 
     <%=form_with model: @sample , local: true do |f|%>
         
@@ -43,7 +40,7 @@
 
     <% end %>
 
-    <!-- プルダウン返却追加 -->
+    <!-- プルダウン返却 -->
         <!-- 同品番のあるロケをプルダウンで返却先に指定 -->
         <%=form_with model: @sample , local: true do |f|%>
         
@@ -57,8 +54,7 @@
              .where.not( ロケーション: "Still Image" )
              .where.not( ロケーション: "Cast" )
              .where.not( ロケーション: "Stylist" )
-             .where.not( ロケーション: "Promotion" ),
-              :ロケーション, :ロケーション %>
+             .where.not( ロケーション: "Promotion" ), :ロケーション, :ロケーション %>
           </div>
           <%= f.submit "このロケへ返却", class:'btn01'%>
 
