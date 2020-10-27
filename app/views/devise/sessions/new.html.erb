@@ -2,9 +2,8 @@
   <div class='account-page__inner clearfix'>
     <div class='account-page__inner--left account-page__header'>
       <h5>wms_3 ログイン</h5>
-      <!--↓デフォルトの記述、現在未使用-->
+      <!--デフォルトの記述、現在未使用-->
       <!--%= render "devise/shared/links" %-->
-      <!--現在オリジナル利用中のため↑のは使っていない-->
     </div>
     <div class='account-page__inner--right user-form'>
 
@@ -36,6 +35,7 @@
           <p><br></p><!--1行分のスペース-->
           <p class="p02">パスワードを忘れた方は</p>
           <%= link_to "パスワード再発行", new_user_password_path,class: "btn01" %>
+          <p>再発行送信済みの方はメールをご確認下さい。</p>
           <p><br></p><!--1行分のスペース-->
 
 

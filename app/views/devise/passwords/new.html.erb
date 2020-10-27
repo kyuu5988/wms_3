@@ -1,0 +1,22 @@
+<div class='account-page' id='account-page'>
+      <h2>パスワード再発行</h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %><br>*登録したメールアドレスを入力して下さい。<br>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", size:10 %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "再発行のURLをこのメールに送信する", class: 'btn01' %>
+    </div>
+  <% end %>
+      <p class=p02>送信後は受信したメールのリンクよりパスワードの再設定が出来ます。</p>
+      <p><br></p><!--1行分のスペース-->
+      <%= link_to 'ログインへ戻る', '/' , class: 'btn01'%>
+      <p><br></p><!--1行分のスペース-->
+
+</div>
+
