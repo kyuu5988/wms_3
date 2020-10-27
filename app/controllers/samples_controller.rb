@@ -174,10 +174,11 @@ class SamplesController < ApplicationController
       render :done_move_one
 
     #集荷モード用
-    elsif current_user.mode == "SYUKA-A" ||
-          current_user.mode == "SYUKA-C" ||
+    elsif current_user.mode == "AST-1F" ||
+          current_user.mode == "AST-2F" ||
+          current_user.mode == "AST-7F" ||
           current_user.mode == "INV-4F"
-          
+   
       @old_loc = @sample.ロケーション#旧ロケ取得
       @sample.update(ロケーション: current_user[:mode] )
       
