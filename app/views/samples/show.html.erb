@@ -1,4 +1,5 @@
 <div class="search-list">
+  <p class="fin"><%= flash[:onair] %></p>
   <%# 基本情報 %>
   <div class="">
     <p class="menu" >サンプル個別詳細情報：<%= @sample.基本コード %></p>
@@ -41,7 +42,7 @@
   <div class="">
     <%# menu2-1 OA情報表示 %>
     <div class="">
-      <p class="menu" >OA予定</p>
+      <p class="menu" >OA予定・過去OA情報</p>
       <% @air_times.each do |air_time| %>
         <% wd = ["日","月","火","水","木","金","土"] %>
         
@@ -55,9 +56,7 @@
           <%# ↑↓locales>ja.yml内でformat設定 %>
           [E]<%= l air_time.end_t, format: :onlytime %>　
           <%# コントローラー内で合計air_time計算 %>
-          <% if air_time.onair_t %><!--null用一時対策-->
           [AT]<%= l air_time.onair_t, format: :onlytime %>
-          <% end %><!--DBよりnullデータ無くなり次第削除OK-->
         </p>
 
       <% end %>
@@ -75,14 +74,11 @@
         　終了<%= f.time_select :end_t, include_seconds: true %><br>
         　<%= f.submit "OA登録", class: 'air_time_form_btn' %>
 
-        <p class="fin"><%= flash[:onair] %></p>
         <% end %>
       <% end %>
     </div>
 
   </div>
-
-
 
 
   <%# menu3 移動履歴 %>

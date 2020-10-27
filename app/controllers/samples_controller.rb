@@ -27,14 +27,13 @@ class SamplesController < ApplicationController
     #air_time登録用
     @air_time = AirTime.new
 
-    #air_time表示用（picT参考）アソシエーション利用時専用
-    # @air_times = @sample.air_times.order("date DESC").order("sort_t")
-
-    #現在はair_time登録時sample_id固定の為以下の記述利用
-    no = @sample[:申込番号] #[]を使ってカラムを指定 
+    #air_time表示用
+    no = @sample[:申込番号] #6桁の申込番号取得 
     sam_top = Sample.find_by(申込番号: no) #同品番の最初のみ取得
 
+    #該当するsample_id のOA予定のみ取得
     @air_times = AirTime.where(sample_id: sam_top[:id]).order("date DESC").order("sort_t")
+    #日付は新しいのが上・同じ日付なら時間が早い順
   end
   
   #url貸出返却用

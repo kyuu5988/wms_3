@@ -29,14 +29,12 @@ class AirTimesController < ApplicationController
 
     #OA予定保存先sample_id固定（001#1）設定
     sam_now = Sample.find(params[:sample_id]) 
-    no = sam_now[:申込番号] #[]を使ってカラムを指定 
+    no = sam_now[:申込番号] #6桁の申込番号取得 
     sam_top = Sample.find_by(申込番号: no) #同品番の最初のみ取得
-
 
     params.require(:air_time).permit(:date, :start_t, :end_t).merge(sample_id: sam_top[:id], onair_t: total, sort_t: start_time)
     
   end
 
 end
-
 
