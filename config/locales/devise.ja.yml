@@ -1,12 +1,3 @@
-#初期テスト中
-ja:
-  devise:
-    sessions:
-      signed_in: 'ログインしました。'
-#ここまでは初期テスト（動作確認ずみ）
-
-#ここからwebよりコピペ
-
 ja:
   devise:
     confirmations:
@@ -74,5 +65,4 @@ ja:
       invalid: "は有効でありません。"
       confirmation: "再入力のパスワードと一致していません。"
 
-      #ここまでwebよりコピペ
 
