@@ -71,8 +71,8 @@ Rails.application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => 'smtp.gmail.com',
-    :user_name => "kyuu5988@gmail.com",
-    :password => "",
+    :user_name => ENV["wms_3_mail_user"],
+    :password => ENV["wms_3_mail_pass"],
     :authentication => 'login'
   }
   #↑こちらも、各種設定変更したらサーバー再起動

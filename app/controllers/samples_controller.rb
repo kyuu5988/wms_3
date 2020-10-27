@@ -132,8 +132,9 @@ class SamplesController < ApplicationController
               group: current_user[:group] )    
               resume.save
 
-
             flash[:already] = "#{current_user[:mode]}へ移動しました"
+          
+          #ST 入庫
           else
             old_loc = pro.ロケーション#旧ロケ取得
 
@@ -255,5 +256,6 @@ class SamplesController < ApplicationController
       group: current_user[:group] )    
       resume.save
   end
+
 
 end
