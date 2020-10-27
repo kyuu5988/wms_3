@@ -113,9 +113,10 @@ class SamplesController < ApplicationController
            flash[:already] = "貸出中です。"
 
         else
-          # inv pick,4F入庫用
-          if current_user.mode == "SYUKA-A" ||
-             current_user.mode == "SYUKA-C" ||
+          # inv 入庫用
+          if current_user.mode == "AST-1F" ||
+             current_user.mode == "AST-2F" ||
+             current_user.mode == "AST-7F" ||
              current_user.mode == "INV-4F"
 
             old_loc = pro.ロケーション#旧ロケ取得
@@ -156,50 +157,6 @@ class SamplesController < ApplicationController
       end
       render :done_move #記述は一つのみ
     end
-
-  end
-
-  #同時移動 C-ST (一時使用見合わせ)
-  def auto_move_cst
-
-    @sample = Sample.find(params[:sample_id]) 
-    #3000/samples/id/auto_move_cstでレコード指定
-
-    no = @sample[:申込番号] #[]を使ってカラムを指定 
-
-    #arr = [] #動作確認用
-    @products = Sample.where(申込番号: no) #指定条件で複数取得
-
-    @products.each do |pro|
-      if pro[:ロケーション] == "stylist"
-
-      elsif pro[:ロケーション] == "C-STUDIO"
-        pro.update(ロケーション: "INV-4F")
-
-      elsif pro[:ロケーション] != "C-STUDIO"
-        pro.update(ロケーション: "C-STUDIO")
-
-      
-      end
-    end
-    render :done_move
-
-    #このしたは以前の分
-    #if @products[0][:ロケーション] == "C-STUDIO"
-      #@products.update(ロケーション: "INV-4F")
-      #↑利用時はコメントアウト外す（これで指定カラムの値変更）
-      #arr << @products[0][:ロケーション] #確認用
-      #取得したレコードのn番目の指定カラム
-      #render plain: arr #確認用
-      #render :done_move
-
-    #elsif @products[0][:ロケーション] != "C-STUDIO"   
-      #@products.update(ロケーション: "C-STUDIO")
-      #render :done_move
-    #else
-      #text = "移動エラーです。南に聞いてください"
-      #render plain: text
-    #end
 
   end
 
