@@ -26,7 +26,6 @@
           </div>
         </div>
 
-
         <div class='field'>
           <div class='field-label'>
             <%= f.label :email%><%= @user.errors.messages[:email][0] %>
@@ -39,7 +38,7 @@
           <div class='field-label'>
             <%= f.label :パスワード%><%= @user.errors.messages[:password][0] %>
             <p><%= @user.errors.messages[:password][1] %></p>
-            <i>(英数字8文字以上)</i>
+            <i>(8文字以上)</i>
           </div>
           <div class='field-input'>
             <%= f.password_field :password, autocomplete: "off", size:10 %>

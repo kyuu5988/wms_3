@@ -5,20 +5,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    # binding.pry
     if current_user.update(user_params)
-      #redirect_to root_path
       redirect_to edit_user_path, notice: '更新完了しました！'
     else
       redirect_to edit_user_path, notice: '入力に誤りがあります'
-      #render :edit, 
     end
   end
 
   #モード切替
   def mode
     user = User.find(current_user.id)
-    # binding.pry
     user.update(mode: params[:mode])
 
     #更新したレコードを取得
