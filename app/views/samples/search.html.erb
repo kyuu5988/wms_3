@@ -1,7 +1,4 @@
 <div>
-    <div class="main_temp">
-      <%= render "main" %>
-    </div>
     <h2>検索結果（無入力時 全データ表示）</h2>
     <p class="fin"><%= flash[:all_sample_in_loc] %> </p>
     <p class="p02">　"<%= @keyword %>"で検索しています。</p>
@@ -23,7 +20,6 @@
             <%= link_to "#{sample.販売商品名}", sample_path(sample.id),method: :get, class:'sample-btn' %>
             　　　<%= sample.カラー %>
           </div>
-
 
           <%# サンプル編集はインベントリー専用 %>
           <div class="">

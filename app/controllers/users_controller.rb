@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  def edit
-    
+  def edit    
   end
 
   def update
@@ -17,9 +16,9 @@ class UsersController < ApplicationController
     user = User.find(current_user.id)
     user.update(mode: params[:mode])
 
-    #更新したレコードを取得
-    # user_mode = User.find(current_user.id)
-    # render json: { mode: user_mode }   
+    # 更新したレコードを取得
+    user_mode = User.find(current_user.id)
+    render json: { mode: user_mode } #JSに返す  
   
   end
 
