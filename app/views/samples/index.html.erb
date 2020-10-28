@@ -17,7 +17,7 @@
       <% end %>
     </div>
         <%# ロケーション内検索 %>
-    <div>
+    <div class="field-input">
         <p class="p04" >ロケーション別・全サンプルリスト</p>
 
         <div class="search2">
@@ -26,35 +26,35 @@
           <%= f.submit "検索", class: "search-btn" %>
           <% end %>
         </div>
-     </div>
+    </div>
     <% end %>
   </div>
 
-  <div>
+  <div class="">
     <p class="menu">Inventory専用メニュー</p>
     <% if current_user.group == "Inventory" %>
       <p><br><%= link_to "サンプル登録", new_sample_path, class: 'btn01' %><br><br></p>
-
-      <p class="p04" >入庫モード切替</p>
-      <%= form_with url: "/mode", method: :post, id:"mode" do |f|%>
-        <div class='mode-menu'>
+      <div class="field-input">
+          <p class="p04" >入庫モード切替</p>
+          <%= form_with url: "/mode", method: :post, id:"mode" do |f|%>
+          <div class='mode-menu'>
           
-          <div class='field-input'>
-            <%= f.select :mode, ['AST-1F','AST-2F','AST-7F','INV-4F'], { selected: current_user.mode } %>              
+            <div class='field-input'>
+              <%= f.select :mode, ['AST-1F','AST-2F','AST-7F','INV-4F'], { selected: current_user.mode } %>              
+            </div>
+
+            <div class="btn01" id="mode-btn">
+            <%= f.submit "モード切替" %>
+            </div>
+
+            <div class="mode-now" id="mode-now" >
+              <p><%= current_user.mode %></p>
+            </div>
+
           </div>
 
-          <div class="btn01" id="mode-btn">
-           <%= f.submit "モード切替" %>
-          </div>
-
-          <div class="mode-now" id="mode-now" >
-            <p><%= current_user.mode %></p>
-          </div>
-
-        </div>
-
-      <% end %>
-
+          <% end %>
+      </div>
 
     <% else %>
       <p>現在ログイン中のユーザーは利用できません。</p>
