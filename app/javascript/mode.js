@@ -1,6 +1,7 @@
 function mode(){
   console.log('mode.js発動中');//動作ck用
   const modeBtn = document.getElementById("mode-btn");
+  const modeSelect = document.getElementById("mode-select");
 
   modeBtn.addEventListener("click", (e) => {
     console.log('mode変更発動');
