@@ -7,23 +7,20 @@
     </div>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f|%>
-        <%= devise_error_messages!%>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :名前%>
+            <%= f.label :名前%><%= @user.errors.messages[:name][0] %>
           </div>
           <div class='field-input'>
             <%= f.text_field :name, autofocus: true, size:8 %>
           </div>
         </div>
-        <!--↓追加したカラム-->
+        <!--追加したカラム-->
         <div class='field'>
           <div class='field-label'>
             <%= f.label :所属部署%>
           </div>
           <div class='field-input'>
-            <!-- 以前の設定 -->
-            <!--%= f.text_field :group, autofocus: true, size:8 %-->
             <!-- プルダウンでDBから選ぶ / 重複は除く -->
             <%= f.collection_select :group, User.select(:group).distinct, :group, :group %>
           </div>
@@ -32,7 +29,7 @@
 
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :email%>
+            <%= f.label :email%><%= @user.errors.messages[:email][0] %>
           </div>
           <div class='field-input'>
             <%= f.email_field :email, autocomplete: "off", size:10 %>
@@ -40,7 +37,8 @@
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :パスワード%>
+            <%= f.label :パスワード%><%= @user.errors.messages[:password][0] %>
+            <p><%= @user.errors.messages[:password][1] %></p>
             <i>(英数字8文字以上)</i>
           </div>
           <div class='field-input'>
@@ -54,6 +52,7 @@
           <div class='field-input'>
             <%= f.password_field :password_confirmation, autocomplete: "off", size:10 %>
           </div>
+          <%= @user.errors.messages[:password_confirmation][0] %>
         </div>
         <div>
           <%= f.submit 'アカウント作成', class: 'btn01' %>
