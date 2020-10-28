@@ -20,7 +20,7 @@ describe User, type: :model do
       end
     end
 
-    context '新規登録が異常な場合' do
+    context '登録が異常な場合' do
       it "nameが無いと登録NG" do
         @user.name = ''
         @user.valid?
