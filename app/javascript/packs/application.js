@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 //追加分
 require("../mode")
+require("../hides/hide_exp_content")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

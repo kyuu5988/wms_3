@@ -52,6 +52,7 @@ a {
   position: fixed;
   padding: 15px;
   border: 3px dotted royalblue;
+  display: none;
 }
 
 .search {
