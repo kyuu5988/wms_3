@@ -5,14 +5,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- ここから追加 -->
-
+    <!-- responsive / reset css / web font -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
 
-    <!-- ここまで追加 -->
+    <!-- responsive / reset css / web font -->
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -21,7 +20,6 @@
   <body>
 
   <!-- header footer 追加 -->
-
 
 <header>
   <p class="p01">wms_3 mobile <%= link_to 'TOP', '/',class:'fot-btn' %>
@@ -41,6 +39,16 @@
     <p class="fin">ログインしていません。</p>
   <% end %>
 </div>
+
+<%# exp about wms_3 %>
+  <div class="exp-board" id="exp-board">
+    <p class="">企業様向け説明メニュー(クリックでON/OFF)</p>
+  </div>
+
+  <div class="exp-content" id="exp-content">
+    <p class="p04">ここからappの利用方法について記入</p>
+  </div>
+<%# exp about wms_3 %>
 
 </header>
 
