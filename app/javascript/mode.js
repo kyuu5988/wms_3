@@ -23,8 +23,8 @@ function mode(){
 
       const userMode = XHR.response.mode;
       modeNow.innerHTML = userMode.mode
-    
-    }
+      window.location.reload();
+      }
   });
 
 }

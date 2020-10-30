@@ -47,7 +47,7 @@
             <%= f.submit "モード切替" %>
             </div>
 
-            <div class="mode-now" id="mode-now" >
+            <div class="mode-now <%= current_user.mode %>" id="mode-now" >
               <p><%= current_user.mode %></p>
             </div>
 
