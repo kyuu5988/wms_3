@@ -13,4 +13,4 @@ function hide_exp_content(){
   })
 }
 
-window.addEventListener("load",hide_exp_content);
+window.addEventListener("turbolinks:load",hide_exp_content);

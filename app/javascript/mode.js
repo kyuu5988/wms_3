@@ -28,4 +28,4 @@ function mode(){
   });
 
 }
-window.addEventListener("load",mode);
+window.addEventListener("turbolinks:load",mode);
