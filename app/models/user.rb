@@ -5,5 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
    
   validates :name, presence: true
-     
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  # belongs_to_active_hash :group
+
 end

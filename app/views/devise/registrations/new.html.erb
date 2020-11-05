@@ -15,14 +15,14 @@
             <%= f.text_field :name, autofocus: true, size:8 %>
           </div>
         </div>
-        <!--追加カラム-->
+
         <div class='field'>
           <div class='field-label'>
             <%= f.label :所属部署%>
           </div>
           <div class='field-input'>
-            <!-- プルダウンでDBから選ぶ / 重複は除く -->
-            <%= f.collection_select :group, User.select(:group).distinct, :group, :group %>
+            <!--a/h利用-->
+            <%= f.collection_select(:group, Group.all, :id, :name, {}, {class:""}) %>
           </div>
         </div>
 
