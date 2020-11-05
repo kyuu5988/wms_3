@@ -39,28 +39,12 @@ header,footer{
   padding: 1px;
 }
 
-// ↓スマホには適している・PC用は要変更
 .sea-res2 {
   margin-bottom: 3px;
   background-color: white;
   display: flex;
   justify-content: space-between;
 }
-
-.fin {
-  color: red;
-
-}
-
-.p02 {
-  color: darkblue;
-}
-
-.p04 {
-  border-top: 2px double darkcyan;
-  margin-top: 4px;
-}
-
 
 .done-form {
   border: 2px dotted pink;

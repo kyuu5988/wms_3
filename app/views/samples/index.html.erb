@@ -7,17 +7,18 @@
           current_user.group == "Stylist" %>
       <p> <%= link_to "自分の貸出確認", rent_list_path, class: 'btn01' %> </p><br><br>
     <% else %>
-    <%# 通常メニュー %>
-    <div class="field-input">
-      <p class="p04" >貸出リストを確認する</p>
-      <%= form_with(url: rent_list_path, local: true, method: :get, class: "") do |f| %>
-      <%= f.collection_select :rent, Sample.select(:rent).distinct.where.not(rent: ""), :rent, :rent %>
+      <%# 通常メニュー %>
+      <div class="field-input">
+        <p class="p04" >貸出リストを確認する</p>
+        <%= form_with(url: rent_list_path, local: true, method: :get, class: "") do |f| %>
+        <%= f.collection_select :rent, Sample.select(:rent).distinct.where.not(rent: ""), :rent, :rent %>
 
-      <%= f.submit "検索", class: "search-btn" %><br><br>
-      <% end %>
-    </div>
-        <%# ロケーション内検索 %>
-    <div class="field-input">
+        <%= f.submit "検索", class: "search-btn" %>
+        <p class="p03">*貸出中のサンプルがある場合<br>リスト内に貸出者名が表示されます。</p><br>
+        <% end %>
+      </div>
+      <%# ロケーション内検索 %>
+      <div class="field-input">
         <p class="p04" >ロケーション別・全サンプルリスト</p>
 
         <div class="search2">
@@ -26,25 +27,27 @@
           <%= f.submit "検索", class: "search-btn" %>
           <% end %>
         </div>
-    </div>
+        <p class="p03">*サンプルが保管されている<br>ロケーションのみ表示されます。</p><br>
+      </div>
     <% end %>
   </div>
 
   <div class="">
     <p class="menu">Inventory専用メニュー</p>
     <% if current_user.group == "Inventory" %>
-      <p><br><%= link_to "サンプル登録", new_sample_path, class: 'btn01' %><br><br></p>
-      <div class="field-input">
+      <p><br><%= link_to "サンプル登録", new_sample_path, class: 'btn01' %></p>
+      <p class="p03">*TV放送で販売する商品サンプルを登録。</p><br>
+        <div class="field-input">
           <p class="p04" >入庫モード切替</p>
           <%= form_with url: "/mode", method: :post, id:"mode" do |f|%>
           <div class='mode-menu'>
           
             <div class='field-input'>
-              <%= f.select :mode, ['AST-1F','AST-2F','AST-7F','INV-4F'], { selected: current_user.mode } %>              
+              <%= f.select :mode, ['A-Bld-1F','A-Bld-2F','B-Bld-7F','INV-4F'], { selected: current_user.mode } %>              
             </div>
 
             <div class="btn01" id="mode-btn">
-            <%= f.submit "モード切替" %>
+              <%= f.submit "モード切替" %>
             </div>
 
             <div class="mode-now <%= current_user.mode %>" id="mode-now" >
@@ -52,12 +55,12 @@
             </div>
 
           </div>
-
+          <p class="p03">*ロケーションの移動先を設定。<br>ここで設定した内容がそのままロケーション名となります。<br>*A-Bld-1F = ビルAの1階</p>
           <% end %>
-      </div>
+        </div>
 
     <% else %>
-      <p>現在ログイン中のユーザーは利用できません。</p>
+      <p class="p03">*現在ログイン中のユーザーは利用できません。<br>　部署が Inventory の社員専用のメニューです。</p>
     <% end %>
 
   </div>

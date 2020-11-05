@@ -1,16 +1,42 @@
 // mode切替状態表示
-.AST-1F {
+.A-Bld-1F {
   background-color: rosybrown;
   color: white;
 }
-.AST-2F {
+.A-Bld-2F {
   background-color: darkcyan;
   color: white;
 }
-.AST-7F {
+.B-Bld-7F {
   background-color: darkkhaki;
 }
 .INV-4F {
   background-color: indigo;
   color: white;
+}
+
+//文字
+
+.fin {
+  color: red;
+}
+
+.p01 {
+  font-size: small;
+  color: navy;
+}
+
+.p02 {
+  color: darkblue;
+}
+
+.p03 {
+  font-size: small;
+  color: crimson;
+  margin-left: 5px;
+}
+
+.p04 {
+  border-top: 2px double darkcyan;
+  margin-top: 4px;
 }
