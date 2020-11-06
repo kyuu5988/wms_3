@@ -1,5 +1,6 @@
 <div>
-    <h2>検索結果（無入力時 全データ表示）</h2>
+    <h2>検索結果</h2>
+    <p class="p03">*Inventoryの社員のみ「情報変更」のメニューが出ます。<br>他の社員は詳細情報は確認できます。</p>
     <p class="fin"><%= flash[:all_sample_in_loc] %> </p>
     <p class="p02">　"<%= @keyword %>"で検索しています。</p>
 
@@ -35,6 +36,6 @@
         <% end %>
 
       <% end %>
-        <p><%= count %>件見つかりました。</p>
+        <br><p><%= count %>件見つかりました。</p>
         
 </div>

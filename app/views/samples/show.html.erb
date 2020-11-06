@@ -3,7 +3,7 @@
   <%# 基本情報 %>
   <div class="">
     <p class="menu" >サンプル個別詳細情報：<%= @sample.基本コード %></p>
-
+    <p class="p03">*商品サンプルの詳細情報は<br>実際の現場ではかなり高い頻度で見られます。</p>
     <p class="p02">
     　<%= @sample.申込番号 %>
     -<%= @sample.サブコード %>
@@ -17,7 +17,7 @@
     </p>
   </div>
 
-  <%# menu1 商品画像 shopchよりリアル品番で取得%>
+  <%# menu1 商品画像 %>
   <div class="">
     <p class="menu" >サンプル画像 ※現在表示されているのは見本です</p>
 
@@ -40,9 +40,10 @@
 
   <%# menu2 OA情報 %>
   <div class="">
-    <%# menu2-1 OA情報表示 %>
+    <%# menu2-1 OA予定表示 %>
     <div class="">
       <p class="menu" >OA予定・過去OA情報</p>
+      <p class="p03">*TV放送で使う予定・使った記録です。<br>実際の現場でも秒単位で管理されています。</p>
       <% @air_times.each do |air_time| %>
         <% wd = ["日","月","火","水","木","金","土"] %>
         
@@ -60,10 +61,11 @@
         </p>
 
       <% end %>
+      <p class="p03">*部署がInventoryの社員は<br>この下にOA予定の登録フォームが表示されます。</p>
 
     </div>
 
-    <%# menu2-2 OA情報登録 %>
+    <%# menu2-2 OA予定登録 %>
     <div class="">
       <% if current_user.group == "Inventory" %>
         <p class="menu" >OA予定登録</p>
@@ -73,17 +75,19 @@
         　開始<%= f.time_select :start_t, include_seconds: true %><br>
         　終了<%= f.time_select :end_t, include_seconds: true %><br>
         　<%= f.submit "OA登録", class: 'air_time_form_btn' %>
+        <p class="p03">*TV放送で使う予定を秒単位で登録。<br>放送時間 [AT] は自動で計算されます。</p>
 
         <% end %>
       <% end %>
     </div>
-
   </div>
 
 
-  <%# menu3 移動履歴 %>
+  <%# menu3 ロケ移動履歴 %>
   <div class="">
     <p class="menu" >ロケーション移動履歴</p>
+    <p class="p03">*社員がサンプルを移動した履歴です。<br>実際の現場でかなり高い頻度で見ます。<br>主に、サンプル所在が不明時の捜索に使用。</p>
+
     <% @resumes.each do |resume| %>
       
       <p class="sea-res">

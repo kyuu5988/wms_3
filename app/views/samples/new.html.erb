@@ -2,7 +2,7 @@
   <%=form_with(url: samples_path, model:@sample, local: true) do |f|%>
     <div class='sample-form'>
       <p class="fin"><%= notice %></p><br>
-
+      <p class="p03">*項目名は実際に私の職場で使用しているものです。<br>適当な番号でも登録は可能です。<br>決まった「申込番号」を入力した場合は<br>詳細ページに自動で商品画像が表示されるようになります。</p><br>
       <h1>新規サンプル登録</h1>
       <p class="fin"><%= flash[:already] %></p>
 
@@ -66,12 +66,8 @@
         <%= f.label :ロケーション, class: ''%>
       </div>
       <div class='field-input'>
-        <%# 以下は以前の手動入力。現在はプルダウン試験中 %>
-        <!--%= f.text_field :ロケーション, placeholder:'入力必須です' ,size:10 %-->
         <%= f.select :ロケーション, { '1ロケ': "11111111", '2ロケ': "22222222" }, { include_blank: 'どちらか選択' }, { class:'', required: true } %>
       </div>
-
-
 
         <%= f.submit "新規登録",class: 'btn01'%>
     </div>
