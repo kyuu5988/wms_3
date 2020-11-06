@@ -109,4 +109,20 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+    #パスワードリセット関連設定
+    config.action_mailer.default_url_options = { host: 'https://wms3-hideo.herokuapp.com/' }
+    #↑を設定したらサーバー再起動
+    #gmailを使ったメール送信機能
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :enable_starttls_auto => true,
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => 'smtp.gmail.com',
+      :user_name => ENV["wms_3_mail_user"],
+      :password => ENV["wms_3_mail_pass"],
+      :authentication => 'login'
+    }
 end
