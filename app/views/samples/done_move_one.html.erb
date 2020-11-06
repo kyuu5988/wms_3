@@ -1,10 +1,6 @@
-  <div class="main_temp">
-    <%= render "main" %>
-  </div>
-
-<p class="fin"><%= flash[:already] %>
-</p>
+<p class="fin"><%= flash[:already] %></p>
 <!--p class="p02">貸出中：<%= @sample.rent %></p-->
+<p class="p03">*↑はタグをスキャンしたあとの処理内容のメッセージです。<br>貸出したサンプルを返却する時は同じタグを再度スキャンします。</p>
 
 <div class="search-list">
     <p class="sea-res">
@@ -15,6 +11,7 @@
     <%= @sample.ロケーション %>
 
     </p>
+    <p class="p03">*NFC / QR タグをスキャンした対象のサンプル</p>
 
     <p class="sea-res2">
     <%= link_to "#{@sample.販売商品名}", sample_path(@sample.id),method: :get, class:'sample-btn' %>
@@ -23,7 +20,7 @@
 
     <%= link_to "#{@sample.申込番号} の一覧を確認" , search_samples_path(keyword:@sample.申込番号 ), class:'btn01' %>
 
-  <%# 貸出本人/pick時だけが返却できるようにする %>
+  <%# 貸出本人/INV社員だけが返却できるようにする %>
   <% if current_user.name == @sample.rent ||
         current_user.group == "Inventory" %>
 
@@ -33,8 +30,9 @@
           <%= f.label :バーコードで返却する場合はこちら %>
         </div>
         <div class='field-input'>
-          <%= f.text_field :ロケーション, placeholder:'QR / NFC / 直接入力' , maxlength:10, size:16, value:"" %>
+          <%= f.text_field :ロケーション, placeholder:'NFC/ QR / 直接入力' , maxlength:10, size:16, value:"" %>
         </div>
+        <p class="p03">*文字列情報が入ったNFC / QR タグがあれば利用可</p>
 
         <%= f.submit "このロケへ返却", class:'btn01'%>
 
@@ -56,6 +54,7 @@
              .where.not( ロケーション: "Stylist" )
              .where.not( ロケーション: "Promotion" ), :ロケーション, :ロケーション %>
           </div>
+          <p class="p03">*一つの申込番号（6桁）には複数のサブ（別カラーなど）があります。<br>通常、それらは同じロケーションで保管されます。<br>ここでは貸出されていない他のサブのあるロケが表示されます。</p>
           <%= f.submit "このロケへ返却", class:'btn01'%>
 
         <% end %>

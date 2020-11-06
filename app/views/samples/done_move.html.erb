@@ -1,4 +1,5 @@
 <p class="fin"><%= flash[:already] %>
+<p class="p03">*スタジオ移動専用のタグをスキャンすると<br>同じ申込番号のサンプルの別のサブ（別カラー）をまとめて移動します。<br>実際の現場でもOA前の準備ではこのように移動します。</p>
 
 <div class="search-list">
   <% @products.each do |prod| %>
@@ -11,7 +12,6 @@
     </p>
 
     <p class="sea-res2">
-    <%# <%= prod.販売商品名 %>
     <%= link_to "#{prod.販売商品名}", sample_path(prod.id),method: :get, class:'sample-btn' %>
     　　　<%= prod.カラー %>
     </p>
