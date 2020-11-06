@@ -33,6 +33,9 @@ function hide_menu_select(){
       insideMenu5.removeAttribute("style", "display:block;");
       insideMenu6.removeAttribute("style", "display:block;");
       insideMenu7.removeAttribute("style", "display:block;");
+      insideMenu8.removeAttribute("style", "display:block;");
+      insideMenu9.removeAttribute("style", "display:block;");
+      insideMenu10.removeAttribute("style", "display:block;");
 
     });
 
@@ -45,6 +48,9 @@ function hide_menu_select(){
       insideMenu5.removeAttribute("style", "display:block;");
       insideMenu6.removeAttribute("style", "display:block;");
       insideMenu7.removeAttribute("style", "display:block;");
+      insideMenu8.removeAttribute("style", "display:block;");
+      insideMenu9.removeAttribute("style", "display:block;");
+      insideMenu10.removeAttribute("style", "display:block;");
     });  
 
     expMenu3.addEventListener('click',function(){
@@ -56,6 +62,9 @@ function hide_menu_select(){
       insideMenu5.removeAttribute("style", "display:block;");
       insideMenu6.removeAttribute("style", "display:block;");
       insideMenu7.removeAttribute("style", "display:block;");
+      insideMenu8.removeAttribute("style", "display:block;");
+      insideMenu9.removeAttribute("style", "display:block;");
+      insideMenu10.removeAttribute("style", "display:block;");
     });
 
     expMenu4.addEventListener('click',function(){
@@ -67,6 +76,9 @@ function hide_menu_select(){
       insideMenu5.removeAttribute("style", "display:block;");
       insideMenu6.removeAttribute("style", "display:block;");
       insideMenu7.removeAttribute("style", "display:block;");
+      insideMenu8.removeAttribute("style", "display:block;");
+      insideMenu9.removeAttribute("style", "display:block;");
+      insideMenu10.removeAttribute("style", "display:block;");
     });
 
     expMenu5.addEventListener('click',function(){
@@ -78,6 +90,9 @@ function hide_menu_select(){
       insideMenu4.removeAttribute("style", "display:block;");
       insideMenu6.removeAttribute("style", "display:block;");
       insideMenu7.removeAttribute("style", "display:block;");
+      insideMenu8.removeAttribute("style", "display:block;");
+      insideMenu9.removeAttribute("style", "display:block;");
+      insideMenu10.removeAttribute("style", "display:block;");
     });
 
     expMenu6.addEventListener('click',function(){
@@ -89,6 +104,9 @@ function hide_menu_select(){
       insideMenu4.removeAttribute("style", "display:block;");
       insideMenu5.removeAttribute("style", "display:block;");
       insideMenu7.removeAttribute("style", "display:block;");
+      insideMenu8.removeAttribute("style", "display:block;");
+      insideMenu9.removeAttribute("style", "display:block;");
+      insideMenu10.removeAttribute("style", "display:block;");
     });
 
     expMenu7.addEventListener('click',function(){
@@ -100,8 +118,24 @@ function hide_menu_select(){
       insideMenu4.removeAttribute("style", "display:block;");
       insideMenu5.removeAttribute("style", "display:block;");
       insideMenu6.removeAttribute("style", "display:block;");
+      insideMenu8.removeAttribute("style", "display:block;");
+      insideMenu9.removeAttribute("style", "display:block;");
+      insideMenu10.removeAttribute("style", "display:block;");
     });
 
+    expMenu8.addEventListener('click',function(){
+      console.log('Menu7 open');
+      insideMenu8.setAttribute("style", "display:block;");
+      insideMenu1.removeAttribute("style", "display:block;");
+      insideMenu2.removeAttribute("style", "display:block;");
+      insideMenu3.removeAttribute("style", "display:block;");
+      insideMenu4.removeAttribute("style", "display:block;");
+      insideMenu5.removeAttribute("style", "display:block;");
+      insideMenu6.removeAttribute("style", "display:block;");
+      insideMenu7.removeAttribute("style", "display:block;");
+      insideMenu9.removeAttribute("style", "display:block;");
+      insideMenu10.removeAttribute("style", "display:block;");
+    });
 
 
 }
