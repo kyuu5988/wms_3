@@ -27,34 +27,6 @@ a {
   text-decoration: none;
 }
 
-.exp-board {
-  width: 400px;
-  background: dimgray;
-  text-align: center;
-  border-radius: 40%;
-  top: 20px;
-  right: 35px;
-  position: fixed;
-  padding: 5px;
-  border: 3px dotted royalblue;
-  cursor: pointer;
-  color: aliceblue;
-}
-
-.exp-content {
-  width: 460px;
-  height: 600px;
-  background: wheat;
-  text-align: center;
-  border-radius: 6%;
-  top: 70px;
-  right: 5px;
-  position: fixed;
-  padding: 15px;
-  border: 3px dotted royalblue;
-  display: none;
-}
-
 .search {
   width: 200px;
   height: 35px;
@@ -138,8 +110,3 @@ footer {
   cursor: cell;
 }
 
-@media (max-width: 500px) {
-  .exp-board, .exp-content{
-    display: none;
-  }
-}
