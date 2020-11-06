@@ -10,6 +10,7 @@ require("channels")
 //追加分
 require("../mode")
 require("../hides/hide_exp_content")
+require("../hides/hide_menu_select")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

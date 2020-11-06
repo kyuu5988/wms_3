@@ -66,6 +66,10 @@
   cursor: help;
 }
 
+.inside-menu1, .inside-menu2 {
+  display: none;
+}
+
 @media (max-width: 500px) {
   .exp-board, .exp-content{
     display: none;
