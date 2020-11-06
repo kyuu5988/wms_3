@@ -61,6 +61,17 @@ function hide_menu_select(){
       insideMenu7.removeAttribute("style", "display:block;");
     });
 
+    expMenu5.addEventListener('click',function(){
+      console.log('Menu3 open');
+      insideMenu5.setAttribute("style", "display:block;");
+      insideMenu1.removeAttribute("style", "display:block;");
+      insideMenu2.removeAttribute("style", "display:block;");
+      insideMenu3.removeAttribute("style", "display:block;");
+      insideMenu4.removeAttribute("style", "display:block;");
+      insideMenu6.removeAttribute("style", "display:block;");
+      insideMenu7.removeAttribute("style", "display:block;");
+    });
+
 }
 
 window.addEventListener("turbolinks:load",hide_menu_select);
