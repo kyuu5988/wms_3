@@ -11,7 +11,7 @@
         <p class="fin" ><%= @sample.errors.messages[:基本コード][0] %>
       </div>
       <div class='field-input'>
-        <%= f.text_field :基本コード, class: '', placeholder: '10桁',size: 12 , maxlength:10, autocomplete: "off" %>
+        <%= f.text_field :基本コード, class: '', autofocus: true, placeholder: '10桁',size: 12 , maxlength:10, autocomplete: "off" %>
       </div>
 
       <div class=''>
