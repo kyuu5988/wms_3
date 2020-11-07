@@ -111,7 +111,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
     #パスワードリセット関連設定
-    config.action_mailer.default_url_options = { host: 'https://wms3-hideo.herokuapp.com/' }
+    config.action_mailer.default_url_options = { host: 'https://wms3-hideo.herokuapp.com' }
     #↑を設定したらサーバー再起動
     #gmailを使ったメール送信機能
     config.action_mailer.raise_delivery_errors = true
