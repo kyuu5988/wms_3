@@ -30,23 +30,17 @@
   </div>
 
   <div class="">
-    <% if user_signed_in? %>
-      <p class="p01">　販売商品名でも検索可。入力無しで全在庫を表示</p>
-    <% else %>
-      <p class="fin">ログインしていません。</p>
-    <% end %>
+      <p class="p01">無入力で全在庫検索 <span class="p03">*印はapp紹介の為の追加説明文です。</span></p>
   </div>
 
   <%# exp about wms_3 %>
     <div class="exp-board" id="exp-board">
       <p class="">企業様向け説明メニュー(クリックでON/OFF)</p>
-      <p class="p02">*利用方法の説明です。左上から順番にご覧下さい。</p>
+      <p class="">*利用方法の説明です。左上から順番にご覧下さい。</p>
     </div>
 
     <div class="exp-content" id="exp-content">
-
       <%= render partial: "layouts/exp-content" %>
-
     </div>
   <%# exp about wms_3 %>
 
