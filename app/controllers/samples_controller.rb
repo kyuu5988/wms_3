@@ -106,9 +106,9 @@ class SamplesController < ApplicationController
 
         else
           # inv 入庫用
-          if current_user.mode == "AST-1F" ||
-             current_user.mode == "AST-2F" ||
-             current_user.mode == "AST-7F" ||
+          if current_user.mode == "A-Bld-1F" ||
+             current_user.mode == "A-Bld-2F" ||
+             current_user.mode == "B-Bld-7F" ||
              current_user.mode == "INV-4F"
 
             old_loc = pro.ロケーション#旧ロケ取得
@@ -166,9 +166,9 @@ class SamplesController < ApplicationController
       render :done_move_one
 
     #集荷モード用
-    elsif current_user.mode == "AST-1F" ||
-          current_user.mode == "AST-2F" ||
-          current_user.mode == "AST-7F" ||
+    elsif current_user.mode == "A-Bld-1F" ||
+          current_user.mode == "A-Bld-2F" ||
+          current_user.mode == "B-Bld-7F" ||
           current_user.mode == "INV-4F"
    
       @old_loc = @sample.ロケーション#旧ロケ取得
