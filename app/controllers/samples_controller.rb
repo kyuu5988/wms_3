@@ -102,7 +102,7 @@ class SamplesController < ApplicationController
            pro[:ロケーション] == "Still Image" ||
            pro[:ロケーション] == "Promotion"
            #何もしない（ロケ移動できない）
-           flash[:already] = "貸出中です。"
+           flash[:already] = "貸出中以外のサンプルを移動しました。"
 
         else
           # inv 入庫用
